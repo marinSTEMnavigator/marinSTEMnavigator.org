@@ -6,478 +6,341 @@
 <title>Marin STEM Navigator — marinSTEMnavigator.org</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #080e1a;
-    --navy-mid: #0d1829;
-    --sky: #2eb8e8;
-    --sky-light: #e3f6fd;
-    --stem-cyan: #2eb8e8;
-    --stem-purple: #9b5de5;
-    --stem-grad: linear-gradient(90deg, #2eb8e8 0%, #9b5de5 100%);
-    --gold: #e8a020;
-    --gold-light: #fdf3e0;
-    --green: #1e7c5a;
-    --green-light: #e4f4ed;
-    --coral: #c94f2a;
-    --coral-light: #faeae4;
-    --violet: #9b5de5;
-    --violet-light: #f0ebff;
-    --teal: #2eb8e8;
-    --teal-light: #e3f6fd;
-    --marin: #8b3a62;
-    --marin-light: #f5e8ef;
-    --gray-50: #f8f9fc;
-    --gray-100: #eef0f5;
-    --gray-200: #d8dce8;
-    --gray-400: #8890a8;
-    --gray-600: #4a5268;
-    --gray-800: #181e2e;
-    --radius: 12px;
-    --radius-sm: 6px;
-    --shadow: 0 2px 12px rgba(8,14,26,0.10);
-    --shadow-hover: 0 6px 24px rgba(8,14,26,0.18);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  .navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    background: rgba(8,14,26,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(46,184,232,0.15); padding: 0.5rem 1.5rem;
-    display: flex; align-items: center; justify-content: space-between; height: 56px;
-  }
-  .navbar-logo { height: 36px; width: auto; display: block; }
-  .navbar-links { display: flex; align-items: center; gap: 1.25rem; }
-  .navbar-links a { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; letter-spacing: 0.04em; transition: color 0.15s; }
-  .navbar-links a:hover { color: var(--stem-cyan); }
-  .navbar-links .nav-cta { background: transparent; border: 1px solid rgba(46,184,232,0.4); color: var(--stem-cyan); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.15s; }
-  .navbar-links .nav-cta:hover { background: rgba(46,184,232,0.12); border-color: var(--stem-cyan); }
-  @media (max-width: 640px) { .navbar-links .nav-label { display: none; } .navbar { padding: 0.5rem 1rem; } }
-
-  body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--gray-800); background: var(--gray-50); line-height: 1.6; padding-top: 56px; }
-
-  .hero { position: relative; color: white; overflow: hidden; min-height: 340px; margin-bottom: 0; display: flex; align-items: center; }
-  .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center right; background-repeat: no-repeat; background-color: var(--navy); }
-  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,14,26,1.0) 0%, rgba(8,14,26,1.0) 48%, rgba(8,14,26,0.4) 65%, rgba(8,14,26,0.0) 100%); }
-  .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 3.5rem 2.5rem 3rem; width: 100%; }
-  .hero-eyebrow { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; border: 1px solid rgba(232,160,32,0.45); padding: 4px 14px; border-radius: 20px; }
-  .hero-wordmark { margin-bottom: 1rem; line-height: 1.05; }
-  .hero-wordmark .line-top { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: white; letter-spacing: 0.04em; text-transform: uppercase; }
-  .hero-wordmark .line-stem { display: block; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(3.5rem, 10vw, 7rem); letter-spacing: -0.01em; text-transform: uppercase; background: var(--stem-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 0.9; }
-  .hero-wordmark .line-opp { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(1rem, 2.5vw, 1.6rem); color: white; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.15rem; }
-  .hero-wordmark .line-opp em { font-style: normal; color: var(--gold); font-weight: 700; }
-  .hero-wordmark .line-nav { display: block; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(1.6rem, 4vw, 3rem); color: white; letter-spacing: 0.03em; text-transform: uppercase; }
-  .hero-divider { display: flex; align-items: center; gap: 10px; margin: 1rem 0; }
-  .hero-divider-line { width: 40px; height: 2px; background: var(--stem-cyan); border-radius: 2px; }
-  .hero-divider-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--stem-cyan); }
-  .hero-tagline { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 0.25rem; }
-  .hero-tagline-accent { font-size: 1rem; font-weight: 700; color: var(--stem-cyan); margin-bottom: 1rem; }
-  .hero-credit { position: absolute; bottom: 10px; right: 14px; font-size: 10px; color: rgba(255,255,255,0.28); z-index: 2; letter-spacing: 0.04em; }
-  @media (max-width: 640px) {
-    .hero-bg { background-position: center bottom; }
-    .hero-bg::after { background: linear-gradient(180deg, rgba(8,14,26,1.0) 0%, rgba(8,14,26,1.0) 60%, rgba(8,14,26,0.5) 78%, rgba(8,14,26,0.1) 100%); }
-    .hero-inner { padding: 3rem 1.5rem 12rem; }
-  }
-
-  .mission { background: #0d1829; border-bottom: 2px solid var(--stem-cyan); margin: 0; padding: 1rem 2rem; text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.75); }
-  .mission strong { color: var(--navy); }
-  .mission a { color: var(--sky); text-decoration: none; font-weight: 500; }
-  .mission a:hover { text-decoration: underline; }
-
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-
-  .controls { background: var(--navy); border-bottom: 2px solid var(--stem-cyan); position: sticky; top: 0; z-index: 100; padding: 1rem 2rem; box-shadow: 0 4px 20px rgba(8,14,26,0.4); }
-  .controls-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .search-box { flex: 1; min-width: 200px; position: relative; }
-  .search-box input { width: 100%; padding: 9px 14px 9px 38px; font-family: 'DM Sans', sans-serif; font-size: 14px; border: 1.5px solid rgba(46,184,232,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.08); color: white; outline: none; transition: border-color 0.2s, background 0.2s; }
-  .search-box input::placeholder { color: rgba(255,255,255,0.4); }
-  .search-box input:focus { border-color: var(--stem-cyan); background: rgba(255,255,255,0.12); }
-  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.4); font-size: 15px; }
-  .filter-group { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-  .pill:hover { border-color: var(--stem-cyan); color: var(--stem-cyan); background: rgba(46,184,232,0.1); }
-  .pill.active { background: var(--stem-cyan); color: var(--navy); border-color: var(--stem-cyan); font-weight: 700; }
-
-  .age-toggle { display: flex; gap: 0; border: 1.5px solid rgba(46,184,232,0.35); border-radius: var(--radius-sm); overflow: hidden; }
-  .age-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 9px 20px; border: none; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.6); cursor: pointer; border-right: 1px solid rgba(46,184,232,0.2); transition: all 0.15s; white-space: nowrap; }
-  .age-btn:last-child { border-right: none; }
-  .age-btn:hover { background: rgba(46,184,232,0.12); color: var(--stem-cyan); }
-  .age-btn.active { background: var(--stem-cyan); color: var(--navy); font-weight: 700; }
-
-  .content { padding: 2rem 2rem 4rem; max-width: 1200px; margin: 0 auto; }
-  .result-count { font-size: 13px; color: var(--gray-400); margin-bottom: 1.5rem; }
-  .result-count strong { color: var(--gray-600); }
-
-  .age-section { margin-bottom: 3rem; }
-  .age-section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
-  .age-section-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--navy-mid); }
-  .age-section-sub { font-size: 12px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; }
-  .age-divider { flex: 1; height: 1px; background: var(--gray-200); }
-  .section-count { font-size: 12px; background: var(--navy); color: white; padding: 2px 10px; border-radius: 20px; font-weight: 500; }
-
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-  .card { background: white; border-radius: var(--radius); border: 1.5px solid var(--gray-100); padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow); transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s; animation: fadeUp 0.3s ease both; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-  .card:hover { box-shadow: var(--shadow-hover); border-color: var(--gray-200); transform: translateY(-2px); }
-  .card.marin-card { border-left: 3px solid var(--marin); }
-  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-  .card-name { font-size: 14px; font-weight: 500; color: #0d1829; line-height: 1.35; flex: 1; }
-  .badge { font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.02em; }
-  .badge-aviation { background: var(--sky-light); color: var(--sky); }
-  .badge-biotech { background: var(--green-light); color: var(--green); }
-  .badge-cyber { background: var(--violet-light); color: var(--violet); }
-  .badge-environment { background: var(--teal-light); color: var(--teal); }
-  .badge-stem { background: var(--gold-light); color: #8a5a00; }
-  .badge-leadership { background: var(--coral-light); color: var(--coral); }
-  .badge-marin { background: var(--marin-light); color: var(--marin); }
-  .card-desc { font-size: 12.5px; color: var(--gray-600); line-height: 1.55; flex: 1; }
-  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; }
-  .meta-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--gray-100); color: var(--gray-600); }
-  .meta-free { background: var(--green-light); color: var(--green); }
-  .meta-paid { background: var(--gold-light); color: #8a5a00; }
-  .meta-marin { background: var(--marin-light); color: var(--marin); font-weight: 500; }
-  .card-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: var(--sky); text-decoration: none; margin-top: 2px; transition: color 0.15s; }
-  .card-link:hover { color: var(--navy); }
-  .card-link::after { content: '↗'; font-size: 11px; }
-
-  .empty { text-align: center; padding: 4rem 2rem; color: var(--gray-400); }
-  .empty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-  .empty h3 { font-size: 1.1rem; color: var(--gray-600); margin-bottom: 0.5rem; }
-  .empty p { font-size: 13px; }
-
-  .submit-section { background: var(--navy); color: white; padding: 3rem 2rem; text-align: center; margin-top: 2rem; }
-  .submit-inner { max-width: 560px; margin: 0 auto; }
-  .submit-section h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 0.75rem; }
-  .submit-section p { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 1.75rem; line-height: 1.6; }
-  .submit-btn { display: inline-block; background: var(--gold); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 28px; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s, transform 0.15s; letter-spacing: 0.01em; }
-  .submit-btn:hover { background: #f0b030; transform: translateY(-1px); }
-
-  footer { background: var(--gray-800); color: rgba(255,255,255,0.5); text-align: center; padding: 1.5rem; font-size: 12px; line-height: 1.8; }
-  footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
-  footer a:hover { color: white; }
-
-  .donate-bar { background: var(--gray-50); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); padding: 1.25rem 2rem; text-align: center; }
-  .donate-inner { max-width: 560px; margin: 0 auto; }
-  .donate-inner p { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin-bottom: 0.75rem; }
-  .donate-btn { display: inline-flex; align-items: center; gap: 8px; background: #008CFF; color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 9px 20px; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s, transform 0.15s; }
-  .donate-btn:hover { background: #0078d4; transform: translateY(-1px); }
-  .donate-label { font-size: 11px; color: var(--gray-400); margin-top: 0.5rem; }
-
-  .national-section { background: var(--navy); color: white; padding: 3rem 2rem; margin-top: 1rem; }
-  .national-inner { max-width: 1200px; margin: 0 auto; }
-  .national-header { margin-bottom: 2rem; }
-  .national-eyebrow { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(232,160,32,0.4); padding: 3px 12px; border-radius: 20px; margin-bottom: 0.75rem; }
-  .national-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: white; margin-bottom: 0.5rem; }
-  .national-header p { font-size: 0.9rem; color: rgba(255,255,255,0.65); max-width: 640px; line-height: 1.6; }
-  .national-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
-  .national-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 18px 20px; display: flex; flex-direction: column; gap: 9px; transition: background 0.2s, border-color 0.2s; }
-  .national-card:hover { background: rgba(255,255,255,0.11); border-color: rgba(255,255,255,0.22); }
-  .national-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-  .national-card-name { font-size: 14px; font-weight: 500; color: white; line-height: 1.35; flex: 1; }
-  .national-badge { font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
-  .nb-academy { background: rgba(232,160,32,0.2); color: var(--gold); }
-  .nb-stem { background: rgba(42,127,193,0.25); color: #7ec8f0; }
-  .nb-aviation { background: rgba(30,124,90,0.25); color: #6dd4a8; }
-  .nb-cyber { background: rgba(90,63,160,0.3); color: #c4b4f0; }
-  .national-desc { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.55; flex: 1; }
-  .national-meta { display: flex; flex-wrap: wrap; gap: 6px; }
-  .national-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-  .national-tag-free { background: rgba(30,124,90,0.3); color: #6dd4a8; }
-  .national-tag-paid { background: rgba(232,160,32,0.2); color: var(--gold); }
-  .national-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: #7ec8f0; text-decoration: none; margin-top: 2px; transition: color 0.15s; }
-  .national-link:hover { color: white; }
-  .national-link::after { content: '\2197'; font-size: 11px; }
-  .national-note { margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(232,160,32,0.12); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 12.5px; color: rgba(255,255,255,0.75); line-height: 1.6; }
-  .national-note strong { color: var(--gold); }
-
-  @media (max-width: 640px) {
-    .hero { padding: 2.5rem 1.25rem 2rem; }
-    .controls { padding: 0.75rem 1rem; }
-    .content { padding: 1.5rem 1rem 3rem; }
-    .age-toggle { flex-wrap: wrap; border-radius: var(--radius-sm); }
-    .age-btn { border-right: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
-  }
+:root{--navy:#080e1a;--navy-mid:#0d1829;--sky:#2eb8e8;--sky-light:#e3f6fd;--stem-cyan:#2eb8e8;--stem-purple:#9b5de5;--stem-grad:linear-gradient(90deg,#2eb8e8 0%,#9b5de5 100%);--gold:#e8a020;--gold-light:#fdf3e0;--green:#1e7c5a;--green-light:#e4f4ed;--coral:#c94f2a;--coral-light:#faeae4;--violet:#9b5de5;--violet-light:#f0ebff;--teal:#2eb8e8;--teal-light:#e3f6fd;--marin:#8b3a62;--marin-light:#f5e8ef;--gray-50:#f8f9fc;--gray-100:#eef0f5;--gray-200:#d8dce8;--gray-400:#8890a8;--gray-600:#4a5268;--gray-800:#181e2e;--radius:12px;--radius-sm:6px;--shadow:0 2px 12px rgba(8,14,26,0.10);--shadow-hover:0 6px 24px rgba(8,14,26,0.18)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--gray-800);background:var(--gray-50);line-height:1.6;padding-top:56px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,14,26,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(46,184,232,0.15);padding:0.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.navbar-links{display:flex;align-items:center;gap:1.25rem}
+.navbar-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.04em;transition:color 0.15s}
+.navbar-links a:hover{color:var(--stem-cyan)}
+.navbar-links .nav-cta{background:transparent;border:1px solid rgba(46,184,232,0.4);color:var(--stem-cyan);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;transition:all 0.15s}
+.navbar-links .nav-cta:hover{background:rgba(46,184,232,0.12);border-color:var(--stem-cyan)}
+@media(max-width:640px){.navbar-links .nav-label{display:none}.navbar{padding:0.5rem 1rem}}
+.hero{position:relative;color:white;overflow:hidden;min-height:340px;margin-bottom:0;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background-image:url('hero.jpg');background-size:cover;background-position:center left;background-repeat:no-repeat}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,26,0.3) 0%,rgba(8,14,26,0.6) 40%,rgba(8,14,26,1.0) 65%)}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:3.5rem 2.5rem 3rem;width:100%;display:flex;justify-content:flex-end}
+.hero-content{max-width:520px}
+.hero-eyebrow{display:inline-block;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;border:1px solid rgba(232,160,32,0.45);padding:4px 14px;border-radius:20px}
+.hero-wordmark{margin-bottom:1rem;line-height:1.05}
+.hero-wordmark .line-top{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:clamp(1.4rem,3.5vw,2.2rem);color:white;letter-spacing:0.04em;text-transform:uppercase}
+.hero-wordmark .line-stem{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(3.5rem,10vw,7rem);letter-spacing:-0.01em;text-transform:uppercase;background:var(--stem-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:0.9}
+.hero-wordmark .line-opp{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:clamp(1rem,2.5vw,1.6rem);color:white;letter-spacing:0.04em;text-transform:uppercase;margin-top:0.15rem}
+.hero-wordmark .line-opp em{font-style:normal;color:var(--gold);font-weight:700}
+.hero-wordmark .line-nav{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(1.6rem,4vw,3rem);color:white;letter-spacing:0.03em;text-transform:uppercase}
+.hero-divider{display:flex;align-items:center;gap:10px;margin:1rem 0}
+.hero-divider-line{width:40px;height:2px;background:var(--stem-cyan);border-radius:2px}
+.hero-divider-dot{width:6px;height:6px;border-radius:50%;background:var(--stem-cyan)}
+.hero-tagline{font-size:1rem;color:rgba(255,255,255,0.8);margin-bottom:0.25rem}
+.hero-tagline-accent{font-size:1rem;font-weight:700;color:var(--stem-cyan);margin-bottom:1rem}
+.hero-credit{position:absolute;bottom:10px;right:14px;font-size:10px;color:rgba(255,255,255,0.28);z-index:2;letter-spacing:0.04em}
+@media(max-width:768px){
+.hero-bg{background-position:center center}
+.hero-bg::after{background:linear-gradient(180deg,rgba(8,14,26,0.2) 0%,rgba(8,14,26,0.7) 50%,rgba(8,14,26,1.0) 75%)}
+.hero-inner{justify-content:center;padding:8rem 1.5rem 3rem;text-align:center}
+.hero-content{max-width:100%}
+.hero-divider{justify-content:center}
+}
+.mission{background:#0d1829;border-bottom:2px solid var(--stem-cyan);margin:0;padding:1rem 2rem;text-align:center;font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7}
+.controls{background:var(--navy);border-bottom:2px solid var(--stem-cyan);position:sticky;top:56px;z-index:100;padding:1rem 2rem;box-shadow:0 4px 20px rgba(8,14,26,0.4)}
+.controls-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.search-box{flex:1;min-width:200px;position:relative}
+.search-box input{width:100%;padding:9px 14px 9px 38px;font-family:'DM Sans',sans-serif;font-size:14px;border:1.5px solid rgba(46,184,232,0.3);border-radius:var(--radius-sm);background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s,background 0.2s}
+.search-box input::placeholder{color:rgba(255,255,255,0.4)}
+.search-box input:focus{border-color:var(--stem-cyan);background:rgba(255,255,255,0.12)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);font-size:15px}
+.filter-group{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.7);cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.pill:hover{border-color:var(--stem-cyan);color:var(--stem-cyan);background:rgba(46,184,232,0.1)}
+.pill.active{background:var(--stem-cyan);color:var(--navy);border-color:var(--stem-cyan);font-weight:700}
+.age-toggle{display:flex;gap:0;border:1.5px solid rgba(46,184,232,0.35);border-radius:var(--radius-sm);overflow:hidden}
+.age-btn{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:9px 20px;border:none;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.6);cursor:pointer;border-right:1px solid rgba(46,184,232,0.2);transition:all 0.15s;white-space:nowrap}
+.age-btn:last-child{border-right:none}
+.age-btn:hover{background:rgba(46,184,232,0.12);color:var(--stem-cyan)}
+.age-btn.active{background:var(--stem-cyan);color:var(--navy);font-weight:700}
+.content{padding:2rem 2rem 4rem;max-width:1200px;margin:0 auto}
+.result-count{font-size:13px;color:var(--gray-400);margin-bottom:1.5rem}
+.result-count strong{color:var(--gray-600)}
+.age-section{margin-bottom:3rem}
+.age-section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
+.age-section-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy-mid)}
+.age-section-sub{font-size:12px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em}
+.age-divider{flex:1;height:1px;background:var(--gray-200)}
+.section-count{font-size:12px;background:var(--navy);color:white;padding:2px 10px;border-radius:20px;font-weight:500}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.card{background:white;border-radius:var(--radius);border:1.5px solid var(--gray-100);padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);transition:box-shadow 0.2s,border-color 0.2s,transform 0.2s;animation:fadeUp 0.3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{box-shadow:var(--shadow-hover);border-color:var(--gray-200);transform:translateY(-2px)}
+.card.marin-card{border-left:3px solid var(--marin)}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.card-name{font-size:14px;font-weight:500;color:#0d1829;line-height:1.35;flex:1}
+.badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;letter-spacing:0.02em}
+.badge-aviation{background:var(--sky-light);color:var(--sky)}
+.badge-biotech{background:var(--green-light);color:var(--green)}
+.badge-cyber{background:var(--violet-light);color:var(--violet)}
+.badge-environment{background:var(--teal-light);color:var(--teal)}
+.badge-stem{background:var(--gold-light);color:#8a5a00}
+.badge-leadership{background:var(--coral-light);color:var(--coral)}
+.badge-marin{background:var(--marin-light);color:var(--marin)}
+.card-desc{font-size:12.5px;color:var(--gray-600);line-height:1.55;flex:1}
+.card-meta{display:flex;flex-wrap:wrap;gap:6px}
+.meta-tag{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--gray-100);color:var(--gray-600)}
+.meta-free{background:var(--green-light);color:var(--green)}
+.meta-paid{background:var(--gold-light);color:#8a5a00}
+.meta-marin{background:var(--marin-light);color:var(--marin);font-weight:500}
+.card-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--sky);text-decoration:none;margin-top:2px;transition:color 0.15s}
+.card-link:hover{color:var(--navy)}
+.card-link::after{content:'↗';font-size:11px}
+.empty{text-align:center;padding:4rem 2rem;color:var(--gray-400)}
+.empty-icon{font-size:2.5rem;margin-bottom:1rem}
+.empty h3{font-size:1.1rem;color:var(--gray-600);margin-bottom:0.5rem}
+.submit-section{background:var(--navy);color:white;padding:3rem 2rem;text-align:center;margin-top:2rem}
+.submit-inner{max-width:560px;margin:0 auto}
+.submit-section h2{font-family:'DM Serif Display',serif;font-size:1.8rem;margin-bottom:0.75rem}
+.submit-section p{font-size:0.95rem;color:rgba(255,255,255,0.7);margin-bottom:1.75rem;line-height:1.6}
+.submit-btn{display:inline-block;background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 28px;border-radius:var(--radius-sm);text-decoration:none;transition:background 0.2s,transform 0.15s;letter-spacing:0.01em}
+.submit-btn:hover{background:#f0b030;transform:translateY(-1px)}
+footer{background:var(--gray-800);color:rgba(255,255,255,0.5);text-align:center;padding:1.5rem;font-size:12px;line-height:1.8}
+footer a{color:rgba(255,255,255,0.65);text-decoration:none}
+footer a:hover{color:white}
+.donate-bar{background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);padding:1.25rem 2rem;text-align:center}
+.donate-inner{max-width:560px;margin:0 auto}
+.donate-inner p{font-size:13px;color:var(--gray-600);line-height:1.6;margin-bottom:0.75rem}
+.donate-btn{display:inline-flex;align-items:center;gap:8px;background:#008CFF;color:white;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 20px;border-radius:var(--radius-sm);text-decoration:none;transition:background 0.2s,transform 0.15s}
+.donate-btn:hover{background:#0078d4;transform:translateY(-1px)}
+.donate-label{font-size:11px;color:var(--gray-400);margin-top:0.5rem}
+.national-section{background:var(--navy);color:white;padding:3rem 2rem;margin-top:1rem}
+.national-inner{max-width:1200px;margin:0 auto}
+.national-header{margin-bottom:2rem}
+.national-eyebrow{display:inline-block;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(232,160,32,0.4);padding:3px 12px;border-radius:20px;margin-bottom:0.75rem}
+.national-header h2{font-family:'DM Serif Display',serif;font-size:1.8rem;color:white;margin-bottom:0.5rem}
+.national-header p{font-size:0.9rem;color:rgba(255,255,255,0.65);max-width:640px;line-height:1.6}
+.national-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.national-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius);padding:18px 20px;display:flex;flex-direction:column;gap:9px;transition:background 0.2s,border-color 0.2s}
+.national-card:hover{background:rgba(255,255,255,0.11);border-color:rgba(255,255,255,0.22)}
+.national-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.national-card-name{font-size:14px;font-weight:500;color:white;line-height:1.35;flex:1}
+.national-badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.nb-academy{background:rgba(232,160,32,0.2);color:var(--gold)}
+.nb-stem{background:rgba(42,127,193,0.25);color:#7ec8f0}
+.nb-aviation{background:rgba(30,124,90,0.25);color:#6dd4a8}
+.nb-cyber{background:rgba(90,63,160,0.3);color:#c4b4f0}
+.national-desc{font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.55;flex:1}
+.national-meta{display:flex;flex-wrap:wrap;gap:6px}
+.national-tag{font-size:11px;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)}
+.national-tag-free{background:rgba(30,124,90,0.3);color:#6dd4a8}
+.national-tag-paid{background:rgba(232,160,32,0.2);color:var(--gold)}
+.national-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:#7ec8f0;text-decoration:none;margin-top:2px;transition:color 0.15s}
+.national-link:hover{color:white}
+.national-link::after{content:'↗';font-size:11px}
+.national-note{margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(232,160,32,0.12);border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.6}
+.national-note strong{color:var(--gold)}
+.courses-teaser{background:linear-gradient(135deg,#0d1829 0%,#1a1040 100%);color:white;padding:3rem 2rem;text-align:center;border-top:2px solid var(--stem-purple);border-bottom:2px solid var(--stem-purple)}
+.courses-teaser-inner{max-width:700px;margin:0 auto}
+.courses-teaser h2{font-family:'DM Serif Display',serif;font-size:1.8rem;margin-bottom:0.5rem}
+.courses-teaser .teaser-sub{font-size:0.95rem;color:rgba(255,255,255,0.7);margin-bottom:1.5rem;line-height:1.6}
+.courses-teaser .teaser-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:1.75rem;text-align:left}
+.teaser-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);padding:14px 16px}
+.teaser-card-name{font-size:13px;font-weight:600;color:white;margin-bottom:4px}
+.teaser-card-detail{font-size:11px;color:rgba(255,255,255,0.55)}
+.courses-btn{display:inline-block;background:var(--stem-purple);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 28px;border-radius:var(--radius-sm);text-decoration:none;transition:background 0.2s,transform 0.15s}
+.courses-btn:hover{background:#8a4dd4;transform:translateY(-1px)}
+@media(max-width:640px){.controls{padding:0.75rem 1rem;top:56px}.content{padding:1.5rem 1rem 3rem}.age-toggle{flex-wrap:wrap;border-radius:var(--radius-sm)}.age-btn{border-right:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)}}
 </style>
 </head>
 <body>
-
-<!-- NAVBAR -->
 <nav class="navbar">
-  <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;color:white;letter-spacing:0.03em;">Marin STEM Navigator</span>
-  <div class="navbar-links">
-    <a href="#local" class="nav-label">Local</a>
-    <a href="#national" class="nav-label">National</a>
-    <a href="mailto:navigate@marinstemnavigator.org" class="nav-cta">Submit a program</a>
-  </div>
+<span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;color:white;letter-spacing:0.03em;">Marin STEM Navigator</span>
+<div class="navbar-links">
+<a href="#local" class="nav-label">Local</a>
+<a href="#national" class="nav-label">National</a>
+<a href="courses.html" class="nav-label">Courses</a>
+<a href="mailto:navigate@marinstemnavigator.org" class="nav-cta">Submit a program</a>
+</div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-inner">
-    <span class="hero-eyebrow">Marin County, California &nbsp;&bull;&nbsp; marinSTEMnavigator.org</span>
-    <div class="hero-wordmark">
-      <span class="line-top">Marin Youth</span>
-      <span class="line-stem">STEM</span>
-      <span class="line-opp">&amp; <em>Opportunity</em></span>
-      <span class="line-nav">Navigator</span>
-    </div>
-    <div class="hero-divider">
-      <div class="hero-divider-line"></div>
-      <div class="hero-divider-dot"></div>
-    </div>
-    <p class="hero-tagline">Real pathways. Real opportunities.</p>
-    <p class="hero-tagline-accent">Local and beyond.</p>
-  </div>
-  <div class="hero-credit">Photo: Elizabeth &mdash; prismatic light</div>
+<div class="hero-bg"></div>
+<div class="hero-inner">
+<div class="hero-content">
+<span class="hero-eyebrow">Marin County, California &bull; marinSTEMnavigator.org</span>
+<div class="hero-wordmark">
+<span class="line-top">Marin Youth</span>
+<span class="line-stem">STEM</span>
+<span class="line-opp">&amp; <em>Opportunity</em></span>
+<span class="line-nav">Navigator</span>
+</div>
+<div class="hero-divider"><div class="hero-divider-line"></div><div class="hero-divider-dot"></div></div>
+<p class="hero-tagline">Real pathways. Real opportunities.</p>
+<p class="hero-tagline-accent">Local and beyond.</p>
+</div>
+</div>
+<div class="hero-credit">Photo: Elizabeth &mdash; prismatic light</div>
 </header>
 
-<!-- MISSION (Edit 3: reformatted as two lines) -->
 <div class="mission">
-  <strong style="color:white;">My Mission:</strong> Connect every motivated Marin County student &ndash; regardless of school, income or connections to<br>opportunities that can change their trajectory.<br>Know a program I am missing? Email: navigate@marinstemnavigator.org
+<strong style="color:white;">My Mission:</strong> Connect every motivated Marin County student &ndash; regardless of school, income or connections to<br>opportunities that can change their trajectory.<br>Know a program I am missing? Email: navigate@marinstemnavigator.org
 </div>
 
-<!-- CONTROLS -->
 <div class="controls">
-  <div class="controls-inner">
-    <div class="search-box">
-      <span class="search-icon">&#x2315;</span>
-      <input type="text" id="search" placeholder="Search programs, topics, organizations... (marinSTEMnavigator.org)" oninput="render()">
-    </div>
-    <div class="age-toggle">
-      <button class="age-btn active" data-age="all" onclick="setAge(this)">All grades</button>
-      <button class="age-btn" data-age="middle" onclick="setAge(this)">Middle school (6–8)</button>
-      <button class="age-btn" data-age="early" onclick="setAge(this)">Early HS (9–10)</button>
-      <button class="age-btn" data-age="upper" onclick="setAge(this)">Upper HS (11–12)</button>
-    </div>
-    <div class="filter-group" id="pill-row"></div>
-  </div>
+<div class="controls-inner">
+<div class="search-box">
+<span class="search-icon">&#x2315;</span>
+<input type="text" id="search" placeholder="Search programs, topics, organizations... (marinSTEMnavigator.org)" oninput="render()">
+</div>
+<div class="age-toggle">
+<button class="age-btn active" data-age="all" onclick="setAge(this)">All grades</button>
+<button class="age-btn" data-age="middle" onclick="setAge(this)">Middle school (6-8)</button>
+<button class="age-btn" data-age="early" onclick="setAge(this)">Early HS (9-10)</button>
+<button class="age-btn" data-age="upper" onclick="setAge(this)">Upper HS (11-12)</button>
+</div>
+<div class="filter-group" id="pill-row"></div>
+</div>
 </div>
 
-<!-- MAIN CONTENT (Edit 8: fixed duplicate id) -->
 <main class="content" id="local">
-  <div class="result-count" id="result-count"></div>
-  <div id="output"></div>
+<div class="result-count" id="result-count"></div>
+<div id="output"></div>
 </main>
 
-<!-- NATIONAL PROGRAMS -->
 <section class="national-section" id="national">
-  <div class="national-inner">
-    <div class="national-header">
-      <span class="national-eyebrow">National &amp; Competitive Programs</span>
-      <h2>Summer Programs Worth Traveling For</h2>
-      <p>These are real, merit-based programs run by the U.S. military academies, federal agencies, and elite institutions. Every program on this list is selective, substantive, and carries genuine weight on a college application or academy nomination packet.</p>
-      <div style="margin-top:1rem;padding:0.85rem 1.1rem;background:rgba(232,160,32,0.13);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:12.5px;color:rgba(255,255,255,0.85);line-height:1.65;">
-        <strong style="color:var(--gold);">Not pay-to-play.</strong> These are not the $3,000 "leadership academies" you see advertised in college prep magazines. Every program here is run by the U.S. government, a federal service academy, or a nationally recognized research institution. Selection is competitive and based on merit. Where there is a program fee, it covers room, board, and materials — not a profit margin. Many offer need-based financial aid. A fee alone does not make something pay-to-play. What makes something pay-to-play is when money substitutes for merit. None of these programs work that way.
-      </div>
-    </div>
-    <div class="national-grid" id="national-grid"></div>
-    <div class="national-note">
-      <strong>Application timing matters.</strong> Most of these programs open applications in December or January for the following summer. Set a calendar reminder in November to check each program's website. Missing the application window by a week is the most common way students lose out on these opportunities.
-    </div>
-  </div>
+<div class="national-inner">
+<div class="national-header">
+<span class="national-eyebrow">National &amp; Competitive Programs</span>
+<h2>Summer Programs Worth Traveling For</h2>
+<p>These are real, merit-based programs run by the U.S. military academies, federal agencies, and elite institutions. Every program on this list is selective, substantive, and carries genuine weight on a college application or academy nomination packet.</p>
+<div style="margin-top:1rem;padding:0.85rem 1.1rem;background:rgba(232,160,32,0.13);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:12.5px;color:rgba(255,255,255,0.85);line-height:1.65;">
+<strong style="color:var(--gold);">Not pay-to-play.</strong> These are not the $3,000 &ldquo;leadership academies&rdquo; you see advertised in college prep magazines. Every program here is run by the U.S. government, a federal service academy, or a nationally recognized research institution. Selection is competitive and based on merit.
+</div>
+</div>
+<div class="national-grid" id="national-grid"></div>
+<div class="national-note">
+<strong>Application timing matters.</strong> Most of these programs open applications in December or January for the following summer. Set a calendar reminder in November to check each program&rsquo;s website. Missing the application window by a week is the most common way students lose out on these opportunities.
+</div>
+</div>
 </section>
 
-<!-- SUBMIT SECTION (Edit 5: trimmed text) -->
+<!-- UNIVERSITY COURSE NAVIGATOR TEASER -->
+<section class="courses-teaser" id="courses">
+<div class="courses-teaser-inner">
+<span class="national-eyebrow" style="border-color:rgba(155,93,229,0.4);color:var(--stem-purple);">University Course Navigator</span>
+<h2>Real College Courses. Free or Low Cost.</h2>
+<p class="teaser-sub">Top universities now publish their actual course content online. These aren&rsquo;t random videos &mdash; they&rsquo;re the same lectures, problem sets, and exams used at MIT, Harvard, Stanford, and Berkeley. Used right, they can strengthen your college application and build real skills.</p>
+<div class="teaser-cards">
+<div class="teaser-card"><div class="teaser-card-name">MIT OpenCourseWare</div><div class="teaser-card-detail">2,500+ courses &bull; Free</div></div>
+<div class="teaser-card"><div class="teaser-card-name">Harvard (CS50 + more)</div><div class="teaser-card-detail">600+ courses &bull; Free</div></div>
+<div class="teaser-card"><div class="teaser-card-name">Stanford Online</div><div class="teaser-card-detail">AI, engineering &bull; Free/Paid</div></div>
+<div class="teaser-card"><div class="teaser-card-name">edX &amp; Coursera</div><div class="teaser-card-detail">Thousands of courses &bull; Free audit</div></div>
+</div>
+<a href="courses.html" class="courses-btn">Explore the full guide &rarr;</a>
+</div>
+</section>
+
 <section class="submit-section">
-  <div class="submit-inner">
-    <h2>Know a program I'm missing?</h2>
-    <p>This guide is student-maintained. If you know of a STEM opportunity, internship, competition, or local resource that Marin youth should know about, let me know!</p>
-    <a href="mailto:navigate@marinstemnavigator.org" target="_blank" class="submit-btn">Submit an opportunity &rarr;</a>
-  </div>
+<div class="submit-inner">
+<h2>Know a program I&rsquo;m missing?</h2>
+<p>This guide is student-maintained. If you know of a STEM opportunity, internship, competition, or local resource that Marin youth should know about, let me know!</p>
+<a href="mailto:navigate@marinstemnavigator.org" class="submit-btn">Submit an opportunity &rarr;</a>
+</div>
 </section>
 
-<!-- DONATE BAR (Edit 7: Venmo link updated) -->
 <div class="donate-bar">
-  <div class="donate-inner">
-    <p>This site is free, has no ads, and is maintained by a student. Web hosting costs real money. If this page helped you find something useful, you can support it with literally one dollar.</p>
-    <a class="donate-btn" href="https://venmo.com/u/LillyStarling" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 2C20.9 4.1 21.5 6.3 21.5 9c0 6.5-5.6 14.9-10.2 19H4.5L2 2h6.9l1.3 10.5C11.8 10 13.5 6.5 13.5 4.1c0-1.3-.2-2.2-.6-3.1L19.5 2z"/></svg>
-      Donate $1 on Venmo
-    </a>
-    <div class="donate-label">Questions or feedback? <a href="mailto:navigate@marinstemnavigator.org" style="color:var(--gray-400);">navigate@marinstemnavigator.org</a> &nbsp;|&nbsp; Seriously, just $1. That&rsquo;s it.</div>
-  </div>
+<div class="donate-inner">
+<p>This site is free, has no ads, and is maintained by a student. Web hosting costs real money. If this page helped you find something useful, you can support it with literally one dollar.</p>
+<a class="donate-btn" href="https://venmo.com/u/LillyStarling" target="_blank">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 2C20.9 4.1 21.5 6.3 21.5 9c0 6.5-5.6 14.9-10.2 19H4.5L2 2h6.9l1.3 10.5C11.8 10 13.5 6.5 13.5 4.1c0-1.3-.2-2.2-.6-3.1L19.5 2z"/></svg>
+Donate $1 on Venmo
+</a>
+<div class="donate-label">Questions or feedback? <a href="mailto:navigate@marinstemnavigator.org" style="color:var(--gray-400);">navigate@marinstemnavigator.org</a> &nbsp;|&nbsp; Seriously, just $1. That&rsquo;s it.</div>
+</div>
 </div>
 
-<!-- ABOUT (Edit 6: Elizabeth bio updated) -->
 <section style="background:var(--gray-100);padding:2.5rem 2rem;text-align:center;border-top:1px solid var(--gray-200);">
-  <div style="max-width:560px;margin:0 auto;">
-    <div style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--navy);color:white;font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:1rem;">E</div>
-    <h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:0.6rem;">Made by a student, for students.</h2>
-    <p style="font-size:0.9rem;color:var(--gray-600);line-height:1.7;">Hi &mdash; I&rsquo;m Elizabeth, an 8th grader in San Rafael. I built this because if you&rsquo;re doing the hard work to be exceptional, you deserve to know every amazing opportunity out there to help you get where you want to go.</p>
-  </div>
+<div style="max-width:560px;margin:0 auto;">
+<div style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--navy);color:white;font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:1rem;">E</div>
+<h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:0.6rem;">Made by a student, for students.</h2>
+<p style="font-size:0.9rem;color:var(--gray-600);line-height:1.7;">Hi &mdash; I&rsquo;m Elizabeth, an 8th grader in San Rafael. I built this because if you&rsquo;re doing the hard work to be exceptional, you deserve to know every amazing opportunity out there to help you get where you want to go.</p>
+</div>
 </section>
 
 <footer>
-  <p>marinSTEMnavigator.org &nbsp;|&nbsp; Built by a Marin student &nbsp;|&nbsp; Updated Spring 2026 &nbsp;|&nbsp; <a href="mailto:navigate@marinstemnavigator.org">navigate@marinstemnavigator.org</a></p>
-  <p>Not affiliated with any listed organization. &nbsp;|&nbsp; <a href="mailto:navigate@marinstemnavigator.org">navigate@marinstemnavigator.org</a></p>
+<p>marinSTEMnavigator.org &nbsp;|&nbsp; Built by a Marin student &nbsp;|&nbsp; Updated Spring 2026 &nbsp;|&nbsp; <a href="mailto:navigate@marinstemnavigator.org">navigate@marinstemnavigator.org</a></p>
+<p>Not affiliated with any listed organization.</p>
 </footer>
-
 <script>
-const OPPORTUNITIES = [
-  {name:"EAA Young Eagles",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Free flights for youth ages 8–17 with volunteer pilots. Use the rally finder on the EAA site to locate upcoming flights near you — Sonoma County Airport (Santa Rosa) is the closest reliable location. Often the first step toward an aviation career.",cost:"Free",type:"Flight experience",url:"https://www.eaa.org/eaa/youth/free-ye-flights",marin:true},
-  {name:"Civil Air Patrol — Cadet Program",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"STEM kits, orientation flights, glider programs, aerospace education, and leadership development. Strong pathway to military aviation and engineering careers. Active squadron at Gnoss Field, Novato.",cost:"Low cost",type:"Program",url:"https://www.gocivilairpatrol.com",marin:true},
-  {name:"CAP Aerospace Education Member (Teacher resource)",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Teachers can join as Aerospace Education Members to receive 20+ free STEM kits, curriculum, and classroom presentations from local CAP volunteers — no cadet program needed.",cost:"Free",type:"Teacher resource",url:"https://www.gocivilairpatrol.com/programs/aerospace-education",marin:true},
-  {name:"AOPA 'You Can Fly' — Pilot Scholarships",cat:"aviation",grades:[9,10,11,12],desc:"High school aviation curriculum, flight training scholarships, and pilot pathway resources from the Aircraft Owners and Pilots Association. Great for students seriously considering a pilot career.",cost:"Free / Scholarship",type:"Scholarship + curriculum",url:"https://www.aopa.org/training-and-safety/students/high-school"},
-  {name:"Hiller Aviation Museum — Teen Programs",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"San Carlos museum adjacent to a real working airport. Teen STEM programming, aircraft design activities, and career exposure. Strong aviation museum experience.",cost:"Low cost",type:"Museum / program",url:"https://hiller.org"},
-  {name:"Chabot Space & Science Center",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Oakland. Astronomy, space science, and Moonlight Missions evening program for grades 6–12. Galaxy Explorers and Oakland Space Academy for teen leadership. Excellent memorable evening trip.",cost:"Low cost",type:"Field trip / program",url:"https://www.chabotspace.org"},
-  {name:"NASA STEM Engagement Programs",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Online engineering design challenges, virtual programs, and some remote internship opportunities. Pair with local CAP or Chabot programs for maximum impact.",cost:"Free",type:"Remote / program",url:"https://www.nasa.gov/learning-resources/"},
-  {name:"Marin Science Seminar — Student Internship",cat:"stem",grades:[9,10,11,12],desc:"Internship for Marin County grades 9–12. Attend 6 Wednesday evening science talks at Terra Linda HS with real STEM professionals. Build a portfolio for college apps. Applications open August each year.",cost:"Free",type:"Internship",url:"https://marinscienceseminar.com/interns/",marin:true},
-  {name:"Marin School-to-Career Internship Program",cat:"stem",grades:[9,10,11,12],desc:"County-run program placing HS students at Autodesk, Kaiser Permanente, Industrial Light & Magic, Marin General Hospital, Mattel, and 140+ other employers. Fall, spring, and summer sessions. One of the most underused resources in Marin.",cost:"Free",type:"Internship",url:"https://www.marinschools.org/programs-services/programs/college-and-career-readiness-new/school-to-career-stc",marin:true},
-  {name:"STEM Marin — 4-Year HS Pathway",cat:"stem",grades:[9,10,11,12],desc:"Competitive 4-year Engineering, Biotech, or Art-in-Science pathway at San Marin High School (NUSD). Applications open November each year. One of the strongest local STEM tracks in Marin County.",cost:"Free",type:"School program",url:"https://stemmarin.org",marin:true},
-  {name:"Exploratorium — San Francisco",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"700+ hands-on science exhibits. Free for Title I schools. Strong teacher materials including Science Snacks and Digital Teaching Boxes. Excellent baseline field trip with deep classroom follow-up resources.",cost:"Free – Low",type:"Field trip",url:"https://www.exploratorium.edu"},
-  {name:"Exploratorium — High School Explainers",cat:"leadership",grades:[9,10,11,12],desc:"Paid/volunteer role facilitating science on the museum floor. Selective. Training, mentorship, and career readiness included. Impressive and unusual for college applications.",cost:"Free",type:"Internship",url:"https://www.exploratorium.edu/education/explainer-programs"},
-  {name:"Lawrence Hall of Science — Berkeley",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"Teacher-centered science institution. School programs, science festivals, professional development, and strong classroom instructional materials. Good for district-level partnerships.",cost:"Low cost",type:"Field trip / teacher resource",url:"https://lawrencehallofscience.org"},
-  {name:"SLAC National Accelerator Lab — Menlo Park",cat:"stem",grades:[9,10,11,12],desc:"Free guided tours for school groups of 10–25. Public lectures. Internship connections for advanced students. One of the most impressive 'real working national lab' experiences available in the Bay Area.",cost:"Free",type:"Tour / internship",url:"https://www6.slac.stanford.edu/community/tours"},
-  {name:"Lawrence Berkeley National Lab — BLAST Internship",cat:"stem",grades:[9,10,11,12],desc:"High school internships and summer research programs at a DOE national lab. Exceptional for college applications and science career pipelines.",cost:"Free",type:"Internship",url:"https://education.lbl.gov"},
-  {name:"Stanford Young Investigators",cat:"stem",grades:[9,10,11,12],desc:"Competitive Bay Area high school research internship at Stanford's Doerr School. Calendar the application period early — spots are limited and Bay Area residency is required.",cost:"Free",type:"Internship",url:"https://earth.stanford.edu/young-investigators"},
-  {name:"Stanford SHTEM — Summer Research",cat:"stem",grades:[10,11,12],desc:"On-site summer research experience at Stanford. Applications open early fall and close quickly. Apply as soon as the application period opens.",cost:"Free",type:"Summer program",url:"https://shtem.stanford.edu"},
-  {name:"The Tech Interactive — San Jose",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"Engineering, AI, coding, design thinking. Field trips, hands-on lab add-ons, and the Tech Challenge competition (grades 4–12). Best for students who like building, prototyping, and applied problem-solving.",cost:"Low cost",type:"Field trip / competition",url:"https://www.thetech.org"},
-  {name:"FIRST Robotics Competition",cat:"stem",grades:[9,10,11,12],desc:"Elite team robotics competition with major college scholarships and industry sponsorships. Builds real engineering skills under real constraints. Impressive for engineering and CS college applications.",cost:"Low cost",type:"Competition",url:"https://www.firstinspires.org"},
-  {name:"COSMOS — UC System Summer Program",cat:"stem",grades:[9,10,11,12],desc:"Highly competitive University of California residential STEM summer program. One of the most prestigious academic summer experiences in California. Apply early in the school year.",cost:"Moderate",type:"Summer program",url:"https://cosmos-ucop.ucdavis.edu"},
-  {name:"MIT Beaver Works Summer Institute",cat:"stem",grades:[11,12],desc:"Free, highly selective summer program (online + residential) covering aerospace, robotics, and AI. One of the most prestigious STEM summer programs in the country for advanced students.",cost:"Free",type:"Summer program",url:"https://beaverworks.ll.mit.edu/CMS/bw/bwsi"},
-  {name:"Genentech — Student Lab Programs",cat:"biotech",grades:[9,10,11,12],desc:"South San Francisco. Student lab programs, biotechnology outreach, and career exposure events. One of the most accessible real biotech pipeline connections for Bay Area high schoolers.",cost:"Free",type:"Program / experience",url:"https://www.gene.com/good/giving/corporate-giving/education"},
-  {name:"UCSF Science & Health Education Partnerships",cat:"biotech",grades:[9,10,11,12],desc:"UCSF-affiliated internships, scientist classroom connections, and biomedical career exposure. Strong for students interested in medicine, nursing, pharmacy, or life sciences.",cost:"Free",type:"Internship",url:"https://sep.ucsf.edu"},
-  {name:"UC Davis Teen Biotech Challenge",cat:"biotech",grades:[9,10,11,12],desc:"Lab-based biotechnology research competition for high school students. UC Davis is at the far edge of the 2-hour range but worth the trip for seriously interested students.",cost:"Low cost",type:"Competition",url:"https://biotech.ucdavis.edu/teen-biotech-challenge"},
-  {name:"CyberPatriot — National Cybersecurity Competition",cat:"cyber",grades:[6,7,8,9,10,11,12],desc:"Northrop Grumman–sponsored national competition. Used by Civil Air Patrol, Sea Cadets, and JROTC. Leads directly to scholarships, internships, and cyber careers. One of the highest-ROI programs in the country.",cost:"Free",type:"Competition",url:"https://www.uscyberpatriot.org"},
-  {name:"AI4ALL — AI & Ethics Program",cat:"cyber",grades:[10,11,12],desc:"Bay Area–rooted AI and ethics programs for high-achieving students. Strong focus on underrepresented communities in tech. Online and in-person options available.",cost:"Free",type:"Program",url:"https://ai-4-all.org"},
-  {name:"Computer History Museum — Teen Volunteer Interns",cat:"cyber",grades:[9,10,11,12],desc:"Grades 9–12 volunteer internship at the Mountain View museum. Work with the education team and engage visitors. Strong for CS and tech career pathways.",cost:"Free",type:"Internship",url:"https://computerhistory.org"},
-  {name:"Marine Mammal Center — Sausalito",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Free Marine Science Sundays. Real working marine mammal hospital and research site — not just a museum. Closest 'authentic science' field trip for Marin students and families.",cost:"Free",type:"Field trip / outreach",url:"https://www.marinemammalcenter.org",marin:true},
-  {name:"Bay Model Visitor Center — Sausalito",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"U.S. Army Corps of Engineers site. Ranger-guided tours on Bay hydrology, estuaries, tides, and coastal engineering. Free by reservation. Ideal for AP Environmental Science and earth science units.",cost:"Free",type:"Field trip",url:"https://www.spn.usace.army.mil/missions/recreation/bay-model-visitor-center/",marin:true},
-  {name:"California Academy of Sciences — SF",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Strong for biology, ecology, climate, and biodiversity. Large educator hub with NGSS-aligned lesson plans. Good field trip with strong classroom pre/post materials.",cost:"Low cost",type:"Field trip",url:"https://www.calacademy.org/educators"},
-  {name:"One Tam Youth Programs — Mt. Tamalpais",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Mt. Tamalpais environmental leadership, service projects, internships, and paid NPS positions (ages 19–30). Programs count for school volunteer hours. Unique Marin-based nature leadership pathway.",cost:"Free / Paid",type:"Internship / volunteer",url:"https://www.onetam.org/our-work/youth-programs",marin:true},
-  {name:"Point Reyes National Seashore Programs",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Field science, ecology, and climate programs at Point Reyes. One of Marin County's most accessible real-science environments for school groups and independent learners.",cost:"Free",type:"Field trip",url:"https://www.nps.gov/pore/learn/education.htm",marin:true},
-  {name:"Golden Gate NPS — Adventure Guides Internship",cat:"environment",grades:[9,10,11,12],desc:"6-month paid internship through the Golden Gate National Parks Conservancy. Environmental leadership and workforce development at Presidio Tunnel Tops. Resume-building and impressive for college apps.",cost:"Paid",type:"Internship",url:"https://www.parksconservancy.org"},
-  {name:"U.S. Naval Sea Cadet Corps",cat:"leadership",grades:[6,7,8,9,10,11,12],desc:"Navy-focused uniformed youth program (ages 10–17) with cybersecurity, engineering, navigation, and leadership tracks. Summer advanced trainings available. Strong pathway for students interested in naval or maritime careers.",cost:"Low cost",type:"Program",url:"https://www.seacadets.org"},
-  {name:"Sea Scouts BSA",cat:"leadership",grades:[8,9,10,11,12],desc:"The official youth program of the U.S. Coast Guard Auxiliary. Coed program for ages 14–20. Focuses on seamanship, navigation, leadership, and maritime skills. Sea Scouts who are active members get priority nominations for the Coast Guard Academy's AIM summer program.",cost:"Low cost",type:"Program",url:"https://seascout.org"},
-  {name:"JROTC — Junior Reserve Officers' Training Corps",cat:"leadership",grades:[9,10,11,12],desc:"School-based elective program available in Army, Navy, Air Force, Marine Corps, and Coast Guard versions. No military obligation — it's a leadership and citizenship development program taught by retired service members. Carries real weight on college applications and military academy nominations.",cost:"Free",type:"School program",url:"https://www.jrotc.org"},
-  {name:"Coast Guard Academy — AIM Program",cat:"leadership",grades:[11,12],desc:"One-week Academy Introduction Mission in New London, CT for rising seniors. Realistic preview of Coast Guard Academy life. In-person or virtual options available. Sea Scouts BSA members receive priority nomination consideration.",cost:"Free",type:"Summer program",url:"https://www.uscga.edu/aim/"},
+const OPPORTUNITIES=[
+{name:"EAA Young Eagles",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Free flights for youth ages 8-17 with volunteer pilots. Sonoma County Airport (Santa Rosa) is the closest reliable location.",cost:"Free",type:"Flight experience",url:"https://www.eaa.org/eaa/youth/free-ye-flights",marin:true},
+{name:"Civil Air Patrol - Cadet Program",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"STEM kits, orientation flights, glider programs, aerospace education, and leadership development. Active squadron at Gnoss Field, Novato.",cost:"Low cost",type:"Program",url:"https://www.gocivilairpatrol.com",marin:true},
+{name:"CAP Aerospace Education Member",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Teachers can join as Aerospace Education Members to receive 20+ free STEM kits, curriculum, and classroom presentations from local CAP volunteers.",cost:"Free",type:"Teacher resource",url:"https://www.gocivilairpatrol.com/programs/aerospace-education",marin:true},
+{name:"AOPA You Can Fly - Pilot Scholarships",cat:"aviation",grades:[9,10,11,12],desc:"High school aviation curriculum, flight training scholarships, and pilot pathway resources from the Aircraft Owners and Pilots Association.",cost:"Free / Scholarship",type:"Scholarship + curriculum",url:"https://www.aopa.org/training-and-safety/students/high-school"},
+{name:"Hiller Aviation Museum - Teen Programs",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"San Carlos museum adjacent to a real working airport. Teen STEM programming, aircraft design activities, and career exposure.",cost:"Low cost",type:"Museum / program",url:"https://hiller.org"},
+{name:"Chabot Space & Science Center",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Oakland. Astronomy, space science, and Moonlight Missions evening program for grades 6-12. Galaxy Explorers and Oakland Space Academy for teen leadership.",cost:"Low cost",type:"Field trip / program",url:"https://www.chabotspace.org"},
+{name:"NASA STEM Engagement Programs",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Online engineering design challenges, virtual programs, and some remote internship opportunities.",cost:"Free",type:"Remote / program",url:"https://www.nasa.gov/learning-resources/"},
+{name:"Marin Science Seminar - Student Internship",cat:"stem",grades:[9,10,11,12],desc:"Internship for Marin County grades 9-12. Attend 6 Wednesday evening science talks at Terra Linda HS with real STEM professionals. Applications open August.",cost:"Free",type:"Internship",url:"https://marinscienceseminar.com/interns/",marin:true},
+{name:"Marin School-to-Career Internship Program",cat:"stem",grades:[9,10,11,12],desc:"County-run program placing HS students at Autodesk, Kaiser, ILM, Marin General Hospital, and 140+ other employers. One of the most underused resources in Marin.",cost:"Free",type:"Internship",url:"https://www.marinschools.org/programs-services/programs/college-and-career-readiness-new/school-to-career-stc",marin:true},
+{name:"STEM Marin - 4-Year HS Pathway",cat:"stem",grades:[9,10,11,12],desc:"Competitive 4-year Engineering, Biotech, or Art-in-Science pathway at San Marin High School (NUSD). Applications open November each year.",cost:"Free",type:"School program",url:"https://stemmarin.org",marin:true},
+{name:"Exploratorium - San Francisco",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"700+ hands-on science exhibits. Free for Title I schools. Strong teacher materials including Science Snacks and Digital Teaching Boxes.",cost:"Free - Low",type:"Field trip",url:"https://www.exploratorium.edu"},
+{name:"Exploratorium - High School Explainers",cat:"leadership",grades:[9,10,11,12],desc:"Paid/volunteer role facilitating science on the museum floor. Selective. Training, mentorship, and career readiness included.",cost:"Free",type:"Internship",url:"https://www.exploratorium.edu/education/explainer-programs"},
+{name:"Lawrence Hall of Science - Berkeley",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"Teacher-centered science institution. School programs, science festivals, professional development, and strong classroom instructional materials.",cost:"Low cost",type:"Field trip / teacher resource",url:"https://lawrencehallofscience.org"},
+{name:"SLAC National Accelerator Lab",cat:"stem",grades:[9,10,11,12],desc:"Free guided tours for school groups of 10-25. Public lectures. One of the most impressive real working national lab experiences in the Bay Area.",cost:"Free",type:"Tour / internship",url:"https://www6.slac.stanford.edu/community/tours"},
+{name:"Lawrence Berkeley National Lab - BLAST",cat:"stem",grades:[9,10,11,12],desc:"High school internships and summer research programs at a DOE national lab. Exceptional for college applications and science career pipelines.",cost:"Free",type:"Internship",url:"https://education.lbl.gov"},
+{name:"Stanford Young Investigators",cat:"stem",grades:[9,10,11,12],desc:"Competitive Bay Area high school research internship at Stanford. Calendar the application period early - spots are limited.",cost:"Free",type:"Internship",url:"https://earth.stanford.edu/young-investigators"},
+{name:"Stanford SHTEM - Summer Research",cat:"stem",grades:[10,11,12],desc:"On-site summer research experience at Stanford. Applications open early fall and close quickly.",cost:"Free",type:"Summer program",url:"https://shtem.stanford.edu"},
+{name:"The Tech Interactive - San Jose",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"Engineering, AI, coding, design thinking. Field trips, hands-on lab add-ons, and the Tech Challenge competition (grades 4-12).",cost:"Low cost",type:"Field trip / competition",url:"https://www.thetech.org"},
+{name:"FIRST Robotics Competition",cat:"stem",grades:[9,10,11,12],desc:"Elite team robotics competition with major college scholarships and industry sponsorships. Builds real engineering skills under real constraints.",cost:"Low cost",type:"Competition",url:"https://www.firstinspires.org"},
+{name:"COSMOS - UC System Summer Program",cat:"stem",grades:[9,10,11,12],desc:"Highly competitive UC residential STEM summer program. One of the most prestigious academic summer experiences in California.",cost:"Moderate",type:"Summer program",url:"https://cosmos-ucop.ucdavis.edu"},
+{name:"MIT Beaver Works Summer Institute",cat:"stem",grades:[11,12],desc:"Free, highly selective summer program covering aerospace, robotics, and AI. One of the most prestigious STEM summer programs in the country.",cost:"Free",type:"Summer program",url:"https://beaverworks.ll.mit.edu/CMS/bw/bwsi"},
+{name:"Genentech - Student Lab Programs",cat:"biotech",grades:[9,10,11,12],desc:"South San Francisco. Student lab programs, biotechnology outreach, and career exposure events.",cost:"Free",type:"Program / experience",url:"https://www.gene.com/good/giving/corporate-giving/education"},
+{name:"UCSF Science & Health Education",cat:"biotech",grades:[9,10,11,12],desc:"UCSF-affiliated internships, scientist classroom connections, and biomedical career exposure.",cost:"Free",type:"Internship",url:"https://sep.ucsf.edu"},
+{name:"UC Davis Teen Biotech Challenge",cat:"biotech",grades:[9,10,11,12],desc:"Lab-based biotechnology research competition for high school students.",cost:"Low cost",type:"Competition",url:"https://biotech.ucdavis.edu/teen-biotech-challenge"},
+{name:"CyberPatriot - Cybersecurity Competition",cat:"cyber",grades:[6,7,8,9,10,11,12],desc:"Northrop Grumman-sponsored national competition. Used by CAP, Sea Cadets, and JROTC. Leads directly to scholarships and cyber careers.",cost:"Free",type:"Competition",url:"https://www.uscyberpatriot.org"},
+{name:"AI4ALL - AI & Ethics Program",cat:"cyber",grades:[10,11,12],desc:"Bay Area-rooted AI and ethics programs for high-achieving students. Strong focus on underrepresented communities in tech.",cost:"Free",type:"Program",url:"https://ai-4-all.org"},
+{name:"Computer History Museum - Teen Interns",cat:"cyber",grades:[9,10,11,12],desc:"Grades 9-12 volunteer internship at the Mountain View museum. Work with the education team and engage visitors.",cost:"Free",type:"Internship",url:"https://computerhistory.org"},
+{name:"Marine Mammal Center - Sausalito",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Free Marine Science Sundays. Real working marine mammal hospital and research site - not just a museum.",cost:"Free",type:"Field trip / outreach",url:"https://www.marinemammalcenter.org",marin:true},
+{name:"Bay Model Visitor Center - Sausalito",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"U.S. Army Corps of Engineers site. Ranger-guided tours on Bay hydrology, estuaries, tides, and coastal engineering. Free by reservation.",cost:"Free",type:"Field trip",url:"https://www.spn.usace.army.mil/missions/recreation/bay-model-visitor-center/",marin:true},
+{name:"California Academy of Sciences",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Strong for biology, ecology, climate, and biodiversity. Large educator hub with NGSS-aligned lesson plans.",cost:"Low cost",type:"Field trip",url:"https://www.calacademy.org/educators"},
+{name:"One Tam Youth Programs - Mt. Tamalpais",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Mt. Tamalpais environmental leadership, service projects, internships, and paid NPS positions. Unique Marin-based nature leadership pathway.",cost:"Free / Paid",type:"Internship / volunteer",url:"https://www.onetam.org/our-work/youth-programs",marin:true},
+{name:"Point Reyes National Seashore Programs",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Field science, ecology, and climate programs at Point Reyes.",cost:"Free",type:"Field trip",url:"https://www.nps.gov/pore/learn/education.htm",marin:true},
+{name:"Golden Gate NPS - Adventure Guides",cat:"environment",grades:[9,10,11,12],desc:"6-month paid internship through the Golden Gate National Parks Conservancy. Environmental leadership at Presidio Tunnel Tops.",cost:"Paid",type:"Internship",url:"https://www.parksconservancy.org"},
+{name:"U.S. Naval Sea Cadet Corps",cat:"leadership",grades:[6,7,8,9,10,11,12],desc:"Navy-focused uniformed youth program (ages 10-17) with cybersecurity, engineering, navigation, and leadership tracks.",cost:"Low cost",type:"Program",url:"https://www.seacadets.org"},
+{name:"Sea Scouts BSA",cat:"leadership",grades:[8,9,10,11,12],desc:"Official youth program of the U.S. Coast Guard Auxiliary. Coed program for ages 14-20. Seamanship, navigation, leadership.",cost:"Low cost",type:"Program",url:"https://seascout.org"},
+{name:"JROTC",cat:"leadership",grades:[9,10,11,12],desc:"School-based elective program in Army, Navy, Air Force, Marine Corps, and Coast Guard versions. No military obligation. Carries real weight on college applications.",cost:"Free",type:"School program",url:"https://www.jrotc.org"},
+{name:"Coast Guard Academy - AIM Program",cat:"leadership",grades:[11,12],desc:"One-week Academy Introduction Mission for rising seniors. Realistic preview of Coast Guard Academy life. Sea Scouts get priority nomination.",cost:"Free",type:"Summer program",url:"https://www.uscga.edu/aim/"}
 ];
-
-const NATIONAL = [
-  {name:"U.S. Naval Academy — Summer STEM Program",badge:"nb-stem",badgeLabel:"STEM Camp",desc:"One week at Annapolis for rising 9th–11th graders. Hands-on STEM projects taught by USNA faculty and midshipmen in world-class labs.",cost:"~$450",costClass:"national-tag-paid",type:"Rising grades 9–11",apply:"January–March",url:"https://www.usna.edu/Admissions/Programs/STEM.php"},
-  {name:"U.S. Naval Academy — Summer Seminar (NASS)",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"Six-day immersion in midshipman life at Annapolis for rising seniors. Live in Bancroft Hall, attend academic and leadership workshops, meet with admissions officers. ~800 spots per session. Highly competitive.",cost:"~$450",costClass:"national-tag-paid",type:"Rising seniors only",apply:"January–March 31",url:"https://www.usna.edu/Admissions/Programs/NASS.php"},
-  {name:"U.S. Air Force Academy — Summer Seminar",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"Four-day immersion in cadet life at Colorado Springs for rising seniors. Assigned an upper-class Element Leader as mentor. Only ~300 spots per session — one of the most selective academy programs.",cost:"Low fee",costClass:"national-tag-paid",type:"Rising seniors only",apply:"December 1 – January 15",url:"https://www.academyadmissions.com/prepare/high-school/summer-seminar/"},
-  {name:"West Point — Summer Leaders Experience (SLE)",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"Five-day immersion at West Point for rising seniors. Military training, academic workshops, and the Candidate Fitness Assessment. ~1,100 spots from 6,000+ applicants. Need-based scholarships available.",cost:"~$500–550",costClass:"national-tag-paid",type:"Rising seniors only",apply:"February 15 – April 15",url:"https://www.westpoint.edu/admissions/summer-program"},
-  {name:"U.S. Coast Guard Academy — AIM Program",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"One-week Academy Introduction Mission in New London, CT for rising seniors. Realistic preview of Coast Guard Academy life. Sea Scouts BSA members receive priority nomination consideration.",cost:"~$750 / Free virtual",costClass:"national-tag-paid",type:"Rising seniors only",apply:"February – April 1",url:"https://www.uscga.edu/aim/"},
-  {name:"USNA & West Point — Summer STEM Camps (Middle School)",badge:"nb-stem",badgeLabel:"STEM Camp",desc:"Both the Naval Academy and West Point run separate STEM camps for middle schoolers and early high schoolers. West Point's camp is fully funded — students only pay transportation.",cost:"Free (West Point) / Low (USNA)",costClass:"national-tag-free",type:"Rising grades 7–10",apply:"January–March",url:"https://www.usna.edu/Admissions/Programs/STEM.php"},
-  {name:"Aim High Flight Academy — U.S. Air Force",badge:"nb-aviation",badgeLabel:"Aviation",desc:"Three-week introductory flight program sponsored by the U.S. Air Force. Participants earn up to 15 actual flight hours while learning about aviation and Air Force careers.",cost:"Free",costClass:"national-tag-free",type:"High school students",apply:"Fall — check website",url:"https://www.airninja.com/aim-high"},
-  {name:"SAME STEM/Engineering Camps — Military Bases",badge:"nb-stem",badgeLabel:"STEM Camp",desc:"Society of American Military Engineers runs week-long engineering and construction camps at military bases. Students live in barracks, operate drones, build and test structures.",cost:"~$800",costClass:"national-tag-paid",type:"Rising grades 10–12",apply:"Spring",url:"https://www.same.org/camps/"},
-  {name:"MIT Beaver Works Summer Institute (BWSI)",badge:"nb-stem",badgeLabel:"STEM Research",desc:"Free, highly selective national summer program covering aerospace, autonomous vehicles, robotics, and AI — developed with MIT Lincoln Laboratory. One of the most credible STEM summer programs in the country.",cost:"Free",costClass:"national-tag-free",type:"Rising grades 11–12",apply:"Winter",url:"https://beaverworks.ll.mit.edu/CMS/bw/bwsi"},
-  {name:"COSMOS — UC System Residential STEM",badge:"nb-stem",badgeLabel:"STEM Research",desc:"California-based residential summer program at UC campuses. Four weeks of intensive STEM coursework in specialized clusters. Highly competitive. Financial aid available.",cost:"Moderate (aid available)",costClass:"national-tag-paid",type:"Rising grades 9–12",apply:"Winter–Spring",url:"https://cosmos-ucop.ucdavis.edu"},
-  {name:"CyberPatriot — National Championship",badge:"nb-cyber",badgeLabel:"Cybersecurity",desc:"Northrop Grumman–sponsored national cybersecurity defense competition. Winning teams advance to national finals in Washington D.C. Leads directly to scholarships and cyber career pipelines.",cost:"Free",costClass:"national-tag-free",type:"Grades 6–12",apply:"Register each fall",url:"https://www.uscyberpatriot.org"},
+const NATIONAL=[
+{name:"U.S. Naval Academy - Summer STEM",badge:"nb-stem",badgeLabel:"STEM Camp",desc:"One week at Annapolis for rising 9th-11th graders. Hands-on STEM projects taught by USNA faculty.",cost:"~$450",costClass:"national-tag-paid",type:"Rising grades 9-11",apply:"January-March",url:"https://www.usna.edu/Admissions/Programs/STEM.php"},
+{name:"U.S. Naval Academy - NASS",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"Six-day immersion in midshipman life at Annapolis for rising seniors. ~800 spots per session.",cost:"~$450",costClass:"national-tag-paid",type:"Rising seniors",apply:"January-March 31",url:"https://www.usna.edu/Admissions/Programs/NASS.php"},
+{name:"Air Force Academy - Summer Seminar",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"Four-day immersion in cadet life at Colorado Springs for rising seniors. Only ~300 spots per session.",cost:"Low fee",costClass:"national-tag-paid",type:"Rising seniors",apply:"Dec 1 - Jan 15",url:"https://www.academyadmissions.com/prepare/high-school/summer-seminar/"},
+{name:"West Point - Summer Leaders (SLE)",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"Five-day immersion at West Point for rising seniors. ~1,100 spots from 6,000+ applicants. Need-based scholarships available.",cost:"~$500-550",costClass:"national-tag-paid",type:"Rising seniors",apply:"Feb 15 - Apr 15",url:"https://www.westpoint.edu/admissions/summer-program"},
+{name:"Coast Guard Academy - AIM",badge:"nb-academy",badgeLabel:"Academy Preview",desc:"One-week Academy Introduction Mission. Sea Scouts BSA members receive priority nomination consideration.",cost:"~$750 / Free virtual",costClass:"national-tag-paid",type:"Rising seniors",apply:"Feb - Apr 1",url:"https://www.uscga.edu/aim/"},
+{name:"USNA & West Point - STEM Camps (MS)",badge:"nb-stem",badgeLabel:"STEM Camp",desc:"Both academies run STEM camps for middle schoolers and early high schoolers. West Point camp is fully funded.",cost:"Free (WP) / Low (USNA)",costClass:"national-tag-free",type:"Rising grades 7-10",apply:"January-March",url:"https://www.usna.edu/Admissions/Programs/STEM.php"},
+{name:"Aim High Flight Academy - USAF",badge:"nb-aviation",badgeLabel:"Aviation",desc:"Three-week introductory flight program. Participants earn up to 15 actual flight hours.",cost:"Free",costClass:"national-tag-free",type:"High school",apply:"Fall",url:"https://www.airninja.com/aim-high"},
+{name:"SAME Engineering Camps",badge:"nb-stem",badgeLabel:"STEM Camp",desc:"Week-long engineering camps at military bases. Students live in barracks, operate drones, build structures.",cost:"~$800",costClass:"national-tag-paid",type:"Rising grades 10-12",apply:"Spring",url:"https://www.same.org/camps/"},
+{name:"MIT Beaver Works (BWSI)",badge:"nb-stem",badgeLabel:"STEM Research",desc:"Free, highly selective national summer program covering aerospace, autonomous vehicles, robotics, and AI.",cost:"Free",costClass:"national-tag-free",type:"Rising grades 11-12",apply:"Winter",url:"https://beaverworks.ll.mit.edu/CMS/bw/bwsi"},
+{name:"COSMOS - UC Residential STEM",badge:"nb-stem",badgeLabel:"STEM Research",desc:"Four weeks of intensive STEM coursework at UC campuses. Highly competitive. Financial aid available.",cost:"Moderate (aid avail)",costClass:"national-tag-paid",type:"Rising grades 9-12",apply:"Winter-Spring",url:"https://cosmos-ucop.ucdavis.edu"},
+{name:"CyberPatriot - Nationals",badge:"nb-cyber",badgeLabel:"Cybersecurity",desc:"National cybersecurity defense competition. Winning teams advance to finals in Washington D.C.",cost:"Free",costClass:"national-tag-free",type:"Grades 6-12",apply:"Register each fall",url:"https://www.uscyberpatriot.org"}
 ];
-
-const CATS = [
-  {id:"all", label:"All categories"},
-  {id:"aviation", label:"Aviation & Aerospace"},
-  {id:"biotech", label:"Biotech & Life Science"},
-  {id:"cyber", label:"Cyber & CS"},
-  {id:"environment", label:"Environment & Field Science"},
-  {id:"stem", label:"STEM & Research"},
-  {id:"leadership", label:"Leadership"},
-  {id:"marin", label:"Marin Local only"},
-];
-
-const AGE_GROUPS = [
-  {key:"middle", label:"Middle School", sub:"Grades 6–8", grades:[6,7,8]},
-  {key:"early", label:"Early High School", sub:"Grades 9–10", grades:[9,10]},
-  {key:"upper", label:"Upper High School", sub:"Grades 11–12", grades:[11,12]},
-];
-
-let activeCat = "all";
-let activeAge = "all";
-
-const pillRow = document.getElementById("pill-row");
-CATS.forEach(c => {
-  const b = document.createElement("button");
-  b.className = "pill cat-" + c.id + (c.id === "all" ? " active" : "");
-  b.textContent = c.label;
-  b.onclick = () => {
-    activeCat = c.id;
-    document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
-    b.classList.add("active");
-    render();
-  };
-  pillRow.appendChild(b);
-});
-
-function setAge(btn) {
-  activeAge = btn.dataset.age;
-  document.querySelectorAll(".age-btn").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  render();
-}
-
-function matchesFilters(item) {
-  const q = document.getElementById("search").value.toLowerCase().trim();
-  const ageGrades = activeAge === "all" ? [6,7,8,9,10,11,12] :
-                    activeAge === "middle" ? [6,7,8] :
-                    activeAge === "early" ? [9,10] : [11,12];
-  const ageOk = item.grades.some(g => ageGrades.includes(g));
-  const catOk = activeCat === "all" || item.cat === activeCat || (activeCat === "marin" && item.marin);
-  const searchOk = !q || [item.name, item.desc, item.cat, item.type, item.cost].join(" ").toLowerCase().includes(q);
-  return ageOk && catOk && searchOk;
-}
-
-function costClass(cost) {
-  if (cost === "Free") return "meta-free";
-  if (cost === "Paid") return "meta-paid";
-  return "";
-}
-
-const CAT_LABELS = {aviation:"Aviation & Aerospace",biotech:"Biotech & Life Science",cyber:"Cyber & CS",environment:"Environment",stem:"STEM & Research",leadership:"Leadership"};
-
-function render() {
-  const out = document.getElementById("output");
-  const ageGrades = activeAge === "all" ? [6,7,8,9,10,11,12] :
-                    activeAge === "middle" ? [6,7,8] :
-                    activeAge === "early" ? [9,10] : [11,12];
-  let total = 0;
-  let html = "";
-
-  const sectionsToShow = activeAge === "all" ? AGE_GROUPS : AGE_GROUPS.filter(g => g.grades.some(gr => ageGrades.includes(gr)));
-
-  sectionsToShow.forEach((group, i) => {
-    const items = OPPORTUNITIES.filter(item =>
-      item.grades.some(g => group.grades.includes(g)) && matchesFilters(item)
-    );
-    if (!items.length) return;
-    total += items.length;
-
-    html += '<div class="age-section"><div class="age-section-header"><div><div class="age-section-title">' + group.label + '</div><div class="age-section-sub">' + group.sub + '</div></div><div class="age-divider"></div><span class="section-count">' + items.length + '</span></div><div class="cards">';
-
-    items.forEach((item, idx) => {
-      const delay = idx * 30;
-      html += '<div class="card' + (item.marin ? " marin-card" : "") + '" style="animation-delay:' + delay + 'ms"><div class="card-header"><div class="card-name">' + item.name + '</div><span class="badge badge-' + item.cat + '">' + (CAT_LABELS[item.cat] || item.cat) + '</span></div><div class="card-desc">' + item.desc + '</div><div class="card-meta"><span class="meta-tag">' + item.type + '</span><span class="meta-tag ' + costClass(item.cost) + '">' + item.cost + '</span>' + (item.marin ? '<span class="meta-tag meta-marin">Marin local</span>' : '') + '</div><a class="card-link" href="' + item.url + '" target="_blank" rel="noopener">Visit website</a></div>';
-    });
-
-    html += '</div></div>';
-  });
-
-  document.getElementById("result-count").innerHTML = total > 0
-    ? 'Showing <strong>' + total + '</strong> opportunit' + (total === 1 ? "y" : "ies")
-    : "";
-
-  out.innerHTML = html || '<div class="empty"><div class="empty-icon">&#x2315;</div><h3>No results found</h3><p>Try a different search term or clear your filters.</p></div>';
-}
-
-// Render national programs
-function renderNational() {
-  const grid = document.getElementById("national-grid");
-  if (!grid) return;
-  let html = "";
-  NATIONAL.forEach(item => {
-    html += '<div class="national-card"><div class="national-card-top"><div class="national-card-name">' + item.name + '</div><span class="national-badge ' + item.badge + '">' + item.badgeLabel + '</span></div><div class="national-desc">' + item.desc + '</div><div class="national-meta"><span class="national-tag">' + item.type + '</span><span class="national-tag ' + item.costClass + '">' + item.cost + '</span><span class="national-tag">Apply: ' + item.apply + '</span></div><a class="national-link" href="' + item.url + '" target="_blank" rel="noopener">Visit website</a></div>';
-  });
-  grid.innerHTML = html;
-}
-
-render();
-renderNational();
+const CATS=[{id:"all",label:"All categories"},{id:"aviation",label:"Aviation & Aerospace"},{id:"biotech",label:"Biotech & Life Science"},{id:"cyber",label:"Cyber & CS"},{id:"environment",label:"Environment & Field Science"},{id:"stem",label:"STEM & Research"},{id:"leadership",label:"Leadership"},{id:"marin",label:"Marin Local only"}];
+const AGE_GROUPS=[{key:"middle",label:"Middle School",sub:"Grades 6-8",grades:[6,7,8]},{key:"early",label:"Early High School",sub:"Grades 9-10",grades:[9,10]},{key:"upper",label:"Upper High School",sub:"Grades 11-12",grades:[11,12]}];
+let activeCat="all",activeAge="all";
+const pillRow=document.getElementById("pill-row");
+CATS.forEach(c=>{const b=document.createElement("button");b.className="pill cat-"+c.id+(c.id==="all"?" active":"");b.textContent=c.label;b.onclick=()=>{activeCat=c.id;document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));b.classList.add("active");render()};pillRow.appendChild(b)});
+function setAge(btn){activeAge=btn.dataset.age;document.querySelectorAll(".age-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");render()}
+function matchesFilters(item){const q=document.getElementById("search").value.toLowerCase().trim();const ag=activeAge==="all"?[6,7,8,9,10,11,12]:activeAge==="middle"?[6,7,8]:activeAge==="early"?[9,10]:[11,12];return item.grades.some(g=>ag.includes(g))&&(activeCat==="all"||item.cat===activeCat||(activeCat==="marin"&&item.marin))&&(!q||[item.name,item.desc,item.cat,item.type,item.cost].join(" ").toLowerCase().includes(q))}
+function cc(c){return c==="Free"?"meta-free":c==="Paid"?"meta-paid":""}
+const CL={aviation:"Aviation & Aerospace",biotech:"Biotech & Life Science",cyber:"Cyber & CS",environment:"Environment",stem:"STEM & Research",leadership:"Leadership"};
+function render(){const out=document.getElementById("output");const ag=activeAge==="all"?[6,7,8,9,10,11,12]:activeAge==="middle"?[6,7,8]:activeAge==="early"?[9,10]:[11,12];let total=0,html="";const sects=activeAge==="all"?AGE_GROUPS:AGE_GROUPS.filter(g=>g.grades.some(gr=>ag.includes(gr)));
+sects.forEach(group=>{const items=OPPORTUNITIES.filter(item=>item.grades.some(g=>group.grades.includes(g))&&matchesFilters(item));if(!items.length)return;total+=items.length;
+html+='<div class="age-section"><div class="age-section-header"><div><div class="age-section-title">'+group.label+'</div><div class="age-section-sub">'+group.sub+'</div></div><div class="age-divider"></div><span class="section-count">'+items.length+'</span></div><div class="cards">';
+items.forEach((item,idx)=>{html+='<div class="card'+(item.marin?" marin-card":"")+'" style="animation-delay:'+(idx*30)+'ms"><div class="card-header"><div class="card-name">'+item.name+'</div><span class="badge badge-'+item.cat+'">'+(CL[item.cat]||item.cat)+'</span></div><div class="card-desc">'+item.desc+'</div><div class="card-meta"><span class="meta-tag">'+item.type+'</span><span class="meta-tag '+cc(item.cost)+'">'+item.cost+'</span>'+(item.marin?'<span class="meta-tag meta-marin">Marin local</span>':'')+'</div><a class="card-link" href="'+item.url+'" target="_blank" rel="noopener">Visit website</a></div>'});
+html+='</div></div>'});
+document.getElementById("result-count").innerHTML=total>0?'Showing <strong>'+total+'</strong> opportunit'+(total===1?"y":"ies"):"";
+out.innerHTML=html||'<div class="empty"><div class="empty-icon">&#x2315;</div><h3>No results found</h3><p>Try a different search term or clear your filters.</p></div>'}
+function renderNational(){const grid=document.getElementById("national-grid");if(!grid)return;let html="";NATIONAL.forEach(item=>{html+='<div class="national-card"><div class="national-card-top"><div class="national-card-name">'+item.name+'</div><span class="national-badge '+item.badge+'">'+item.badgeLabel+'</span></div><div class="national-desc">'+item.desc+'</div><div class="national-meta"><span class="national-tag">'+item.type+'</span><span class="national-tag '+item.costClass+'">'+item.cost+'</span><span class="national-tag">Apply: '+item.apply+'</span></div><a class="national-link" href="'+item.url+'" target="_blank" rel="noopener">Visit website</a></div>'});grid.innerHTML=html}
+render();renderNational();
 </script>
-
 </body>
 </html>
-Apply all site edits
+Update index with hero and courses teaser
