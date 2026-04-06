@@ -20,7 +20,7 @@ body{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--gray-800);back
 .navbar-links a:hover{color:var(--stem-cyan)}
 .navbar-links .nav-cta{background:transparent;border:1px solid rgba(46,184,232,0.4);color:var(--stem-cyan);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;transition:all 0.15s}
 .navbar-links .nav-cta:hover{background:rgba(46,184,232,0.12);border-color:var(--stem-cyan)}
-@media(max-width:640px){.navbar-links .nav-label{display:none}.navbar{padding:0.5rem 1rem}}
+@media(max-width:640px){.navbar-links .nav-label{display:none}.navbar{padding:0.5rem 1rem}.navbar-links .nav-cta{font-size:11px;padding:4px 10px}.navbar-links .nav-cta .cta-full{display:none}.navbar-links .nav-cta .cta-short{display:inline}}
 .hero{position:relative;color:white;overflow:hidden;min-height:340px;margin-bottom:0;display:flex;align-items:center}
 .hero-bg{position:absolute;inset:0;background-image:url('hero.jpg');background-size:cover;background-position:center left;background-repeat:no-repeat}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,26,0.3) 0%,rgba(8,14,26,0.6) 40%,rgba(8,14,26,1.0) 65%)}
@@ -150,7 +150,7 @@ footer a:hover{color:white}
 .teaser-card-detail{font-size:11px;color:rgba(255,255,255,0.55)}
 .courses-btn{display:inline-block;background:var(--stem-purple);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 28px;border-radius:var(--radius-sm);text-decoration:none;transition:background 0.2s,transform 0.15s}
 .courses-btn:hover{background:#8a4dd4;transform:translateY(-1px)}
-@media(max-width:640px){.controls{padding:0.75rem 1rem;top:56px}.content{padding:1.5rem 1rem 3rem}.age-toggle{flex-wrap:wrap;border-radius:var(--radius-sm)}.age-btn{border-right:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)}}
+@media(max-width:640px){.controls{padding:0.75rem 1rem;top:56px}.content{padding:1.5rem 1rem 3rem}.age-toggle{display:grid;grid-template-columns:1fr 1fr;border:none;gap:6px;width:100%}.age-btn{border:1.5px solid rgba(46,184,232,0.35);border-radius:var(--radius-sm);text-align:center;font-size:13px;padding:8px 12px}.filter-group{gap:5px}.pill{font-size:11px;padding:4px 10px}.cards{grid-template-columns:1fr}.national-grid{grid-template-columns:1fr}.courses-teaser .teaser-cards{grid-template-columns:1fr 1fr}.submit-section{padding:2rem 1.5rem}.donate-bar{padding:1rem 1.5rem}.mission{padding:0.75rem 1rem;font-size:0.82rem}}
 </style>
 </head>
 <body>
@@ -160,7 +160,7 @@ footer a:hover{color:white}
 <a href="#local" class="nav-label">Local</a>
 <a href="#national" class="nav-label">National</a>
 <a href="courses.html" class="nav-label">Courses</a>
-<a href="mailto:navigate@marinstemnavigator.org" class="nav-cta">Submit a program</a>
+<a href="mailto:navigate@marinstemnavigator.org" class="nav-cta"><span class="cta-full">Submit a program</span><span class="cta-short" style="display:none">Submit</span></a>
 </div>
 </nav>
 
@@ -346,4 +346,4 @@ render();renderNational();
 </script>
 </body>
 </html>
-Fix links and meta description
+Mobile optimization 
