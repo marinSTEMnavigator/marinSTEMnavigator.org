@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marin STEM Navigator — Recursos STEM para estudiantes del Condado de Marin</title>
+<meta name="description" content="Recurso gratuito que conecta a estudiantes del Condado de Marin con oportunidades STEM, pasantías, competencias y programas. Hecho por una estudiante, para estudiantes. marinSTEMnavigator.org">
+<link rel="canonical" href="https://marinstemnavigator.org/es/">
+<link rel="alternate" hreflang="en" href="https://marinstemnavigator.org/">
+<link rel="alternate" hreflang="es" href="https://marinstemnavigator.org/es/">
+<link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#080e1a;--navy-mid:#0d1829;--site-bg:#0B1F3A;--sky:#2eb8e8;--sky-light:#e3f6fd;--stem-cyan:#2eb8e8;--stem-purple:#9b5de5;--stem-grad:linear-gradient(90deg,#2eb8e8 0%,#9b5de5 100%);--gold:#e8a020;--gold-light:#fdf3e0;--green:#1e7c5a;--green-light:#e4f4ed;--coral:#c94f2a;--coral-light:#faeae4;--violet:#9b5de5;--violet-light:#f0ebff;--teal:#2eb8e8;--teal-light:#e3f6fd;--marin:#8b3a62;--marin-light:#f5e8ef;--gray-50:#f8f9fc;--gray-100:#eef0f5;--gray-200:#d8dce8;--gray-400:#8890a8;--gray-600:#4a5268;--gray-800:#181e2e;--radius:12px;--radius-sm:6px;--shadow:0 2px 12px rgba(0,0,0,0.25);--shadow-hover:0 6px 24px rgba(0,0,0,0.35)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--gray-800);background:var(--site-bg);line-height:1.6;padding-top:56px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,14,26,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(46,184,232,0.15);padding:0.5rem 1.5rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.navbar-links{display:flex;align-items:center;gap:1.25rem}
+.navbar-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.04em;transition:color 0.15s}
+.navbar-links a:hover{color:var(--stem-cyan)}
+.navbar-links .nav-cta{background:transparent;border:1px solid rgba(46,184,232,0.4);color:var(--stem-cyan);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;text-decoration:none;transition:all 0.15s}
+.navbar-links .nav-cta:hover{background:rgba(46,184,232,0.12);border-color:var(--stem-cyan)}
+.lang-switch{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.04em}
+.lang-switch a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.15s}
+.lang-switch a:hover{color:var(--stem-cyan)}
+.lang-switch .lang-active{color:var(--stem-cyan);font-weight:600}
+@media(max-width:640px){.navbar-links .nav-label{display:none}.navbar{padding:0.5rem 1rem}.navbar-links .nav-cta{font-size:11px;padding:4px 10px}.navbar-links .nav-cta .cta-full{display:none}.navbar-links .nav-cta .cta-short{display:inline}}
+.hero{position:relative;color:white;overflow:hidden;background:var(--site-bg);min-height:420px;background-image:url('../hero.jpg');background-size:cover;background-position:left center;background-repeat:no-repeat}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,31,58,0) 0%,rgba(11,31,58,0) 40%,rgba(11,31,58,0.85) 55%,rgba(11,31,58,1) 65%,rgba(11,31,58,1) 100%);z-index:1}
+.hero-photo-spacer{display:none}
+.hero-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;min-height:420px;display:flex;align-items:center;justify-content:flex-end;padding:3rem 4rem 3rem 2rem}
+.hero-content{max-width:560px;width:100%}
+.hero-eyebrow{display:inline-block;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;border:1px solid rgba(232,160,32,0.5);padding:5px 16px;border-radius:20px}
+.hero-wordmark{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(2.2rem,5.5vw,3.8rem);letter-spacing:-0.01em;line-height:1.05;margin-bottom:0}
+.hero-wordmark .wm-marin{color:white}
+.hero-wordmark .wm-stem{background:var(--stem-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-wordmark .wm-nav{color:var(--gold);display:block}
+.hero-divider{display:flex;align-items:center;gap:10px;margin:1rem 0 0.75rem}
+.hero-divider-line{width:40px;height:2px;background:var(--stem-cyan);border-radius:2px}
+.hero-divider-dot{width:6px;height:6px;border-radius:50%;background:var(--stem-cyan)}
+.hero-tagline{font-size:1rem;color:rgba(255,255,255,0.85);margin-bottom:0.1rem}
+.hero-tagline-accent{font-size:1rem;font-weight:500;color:var(--stem-cyan)}
+.hero-credit{position:absolute;bottom:10px;right:14px;font-size:10px;color:rgba(255,255,255,0.35);z-index:3;letter-spacing:0.04em}
+@media(max-width:860px){
+.hero{background-image:url('../hero-mobile.jpg');background-position:center center;min-height:auto;display:flex;flex-direction:column}
+.hero::before{background:linear-gradient(180deg,rgba(11,31,58,0) 0%,rgba(11,31,58,0) 50%,rgba(11,31,58,0.7) 75%,rgba(11,31,58,1) 100%)}
+.hero-inner{min-height:auto;padding:0;display:block}
+.hero-photo-spacer{display:block;height:360px;width:100%}
+.hero-content{padding:1.5rem 1.5rem 2.5rem;text-align:center;max-width:100%;position:relative;z-index:2;background:var(--site-bg)}
+.hero-divider{justify-content:center}
+.hero-wordmark{font-size:clamp(2.2rem,9vw,3rem);line-height:1.1}
+.hero-eyebrow{font-size:10px;padding:5px 16px;margin-bottom:1.25rem}
+.hero-credit{bottom:6px;right:10px;font-size:9px}
+.hero-tagline,.hero-tagline-accent{font-size:1.05rem}
+}
+@media(max-width:480px){
+.hero-photo-spacer{height:300px}
+.hero-wordmark{font-size:2.1rem}
+}
+.mission{background:#0d1829;border-bottom:2px solid var(--stem-cyan);margin:0;padding:1rem 2rem;text-align:center;font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7}
+.controls{background:var(--navy);border-bottom:2px solid var(--stem-cyan);position:sticky;top:56px;z-index:100;padding:1rem 2rem;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.controls-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.search-box{flex:1;min-width:200px;position:relative}
+.search-box input{width:100%;padding:9px 14px 9px 38px;font-family:'DM Sans',sans-serif;font-size:14px;border:1.5px solid rgba(46,184,232,0.3);border-radius:var(--radius-sm);background:rgba(255,255,255,0.08);color:white;outline:none;transition:border-color 0.2s,background 0.2s}
+.search-box input::placeholder{color:rgba(255,255,255,0.4)}
+.search-box input:focus{border-color:var(--stem-cyan);background:rgba(255,255,255,0.12)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);font-size:15px}
+.filter-group{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.7);cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.pill:hover{border-color:var(--stem-cyan);color:var(--stem-cyan);background:rgba(46,184,232,0.1)}
+.pill.active{background:var(--stem-cyan);color:var(--navy);border-color:var(--stem-cyan);font-weight:700}
+.age-toggle{display:flex;gap:0;border:1.5px solid rgba(46,184,232,0.35);border-radius:var(--radius-sm);overflow:hidden}
+.age-btn{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:9px 20px;border:none;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.6);cursor:pointer;border-right:1px solid rgba(46,184,232,0.2);transition:all 0.15s;white-space:nowrap}
+.age-btn:last-child{border-right:none}
+.age-btn:hover{background:rgba(46,184,232,0.12);color:var(--stem-cyan)}
+.age-btn.active{background:var(--stem-cyan);color:var(--navy);font-weight:700}
+.content{padding:2rem 2rem 4rem;max-width:1200px;margin:0 auto}
+.result-count{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:1.5rem}
+.result-count strong{color:var(--stem-cyan)}
+.age-section{margin-bottom:3rem}
+.age-section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
+.age-section-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:white}
+.age-section-sub{font-size:12px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em}
+.age-divider{flex:1;height:1px;background:rgba(255,255,255,0.15)}
+.section-count{font-size:12px;background:var(--stem-cyan);color:var(--navy);padding:2px 10px;border-radius:20px;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.card{background:white;border-radius:var(--radius);border:1.5px solid var(--gray-100);padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);transition:box-shadow 0.2s,border-color 0.2s,transform 0.2s;animation:fadeUp 0.3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{box-shadow:var(--shadow-hover);border-color:var(--gray-200);transform:translateY(-2px)}
+.card.marin-card{border-left:3px solid var(--marin)}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.card-name{font-size:14px;font-weight:500;color:#0d1829;line-height:1.35;flex:1}
+.badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;letter-spacing:0.02em}
+.badge-aviation{background:var(--sky-light);color:var(--sky)}
+.badge-biotech{background:var(--green-light);color:var(--green)}
+.badge-cyber{background:var(--violet-light);color:var(--violet)}
+.badge-environment{background:var(--teal-light);color:var(--teal)}
+.badge-stem{background:var(--gold-light);color:#8a5a00}
+.badge-leadership{background:var(--coral-light);color:var(--coral)}
+.badge-marin{background:var(--marin-light);color:var(--marin)}
+.card-desc{font-size:12.5px;color:var(--gray-600);line-height:1.55;flex:1}
+.card-meta{display:flex;flex-wrap:wrap;gap:6px}
+.meta-tag{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--gray-100);color:var(--gray-600)}
+.meta-free{background:var(--green-light);color:var(--green)}
+.meta-paid{background:var(--gold-light);color:#8a5a00}
+.meta-marin{background:var(--marin-light);color:var(--marin);font-weight:500}
+.card-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--sky);text-decoration:none;margin-top:2px;transition:color 0.15s}
+.card-link:hover{color:var(--navy)}
+.card-link::after{content:'↗';font-size:11px}
+.empty{text-align:center;padding:4rem 2rem;color:rgba(255,255,255,0.5)}
+.empty-icon{font-size:2.5rem;margin-bottom:1rem}
+.empty h3{font-size:1.1rem;color:rgba(255,255,255,0.8);margin-bottom:0.5rem}
+.submit-section{background:var(--navy);color:white;padding:3rem 2rem;text-align:center;margin-top:2rem}
+.submit-inner{max-width:560px;margin:0 auto}
+.submit-section h2{font-family:'DM Serif Display',serif;font-size:1.8rem;margin-bottom:0.75rem}
+.submit-section p{font-size:0.95rem;color:rgba(255,255,255,0.7);margin-bottom:1.75rem;line-height:1.6}
+.submit-btn{display:inline-block;background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 28px;border-radius:var(--radius-sm);text-decoration:none;transition:background 0.2s,transform 0.15s;letter-spacing:0.01em}
+.submit-btn:hover{background:#f0b030;transform:translateY(-1px)}
+footer{background:var(--gray-800);color:rgba(255,255,255,0.5);text-align:center;padding:1.5rem;font-size:12px;line-height:1.8}
+footer a{color:rgba(255,255,255,0.65);text-decoration:none}
+footer a:hover{color:white}
+.translation-note{background:rgba(46,184,232,0.08);border-top:1px solid rgba(46,184,232,0.2);border-bottom:1px solid rgba(46,184,232,0.2);padding:1.25rem 2rem;text-align:center;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65}
+.translation-note a{color:var(--stem-cyan);text-decoration:none}
+.translation-note a:hover{text-decoration:underline}
+.donate-bar{background:var(--navy-mid);border-top:1px solid rgba(46,184,232,0.15);border-bottom:1px solid rgba(46,184,232,0.15);padding:1.25rem 2rem;text-align:center}
+.donate-inner{max-width:560px;margin:0 auto}
+.donate-inner p{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:0.75rem}
+.donate-btn{display:inline-flex;align-items:center;gap:8px;background:#635BFF;color:white;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 20px;border-radius:var(--radius-sm);text-decoration:none;transition:background 0.2s,transform 0.15s}
+.donate-btn:hover{background:#5147e0;transform:translateY(-1px)}
+.donate-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:0.5rem}
+.donate-label a{color:rgba(255,255,255,0.7)}
+.national-section{background:var(--navy);color:white;padding:3rem 2rem;margin-top:1rem}
+.national-inner{max-width:1200px;margin:0 auto}
+.national-header{margin-bottom:2rem}
+.national-eyebrow{display:inline-block;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(232,160,32,0.4);padding:3px 12px;border-radius:20px;margin-bottom:0.75rem}
+.national-header h2{font-family:'DM Serif Display',serif;font-size:1.8rem;color:white;margin-bottom:0.5rem}
+.national-header p{font-size:0.9rem;color:rgba(255,255,255,0.65);max-width:640px;line-height:1.6}
+.national-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.national-card{background:rgba(255,255,255,0.13);border:1.5px solid rgba(46,184,232,0.35);border-radius:var(--radius);padding:18px 20px;display:flex;flex-direction:column;gap:9px;transition:background 0.2s,border-color 0.2s,transform 0.2s;box-shadow:0 2px 10px rgba(0,0,0,0.15)}
+.national-card:hover{background:rgba(255,255,255,0.18);border-color:var(--stem-cyan);transform:translateY(-2px)}
+.national-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.national-card-name{font-size:14px;font-weight:500;color:white;line-height:1.35;flex:1}
+.national-badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.nb-academy{background:rgba(232,160,32,0.2);color:var(--gold)}
+.nb-stem{background:rgba(42,127,193,0.25);color:#7ec8f0}
+.nb-aviation{background:rgba(30,124,90,0.25);color:#6dd4a8}
+.nb-cyber{background:rgba(90,63,160,0.3);color:#c4b4f0}
+.national-desc{font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.55;flex:1}
+.national-meta{display:flex;flex-wrap:wrap;gap:6px}
+.national-tag{font-size:11px;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8)}
+.national-tag-free{background:rgba(30,124,90,0.35);color:#7de0b3}
+.national-tag-paid{background:rgba(232,160,32,0.25);color:var(--gold)}
+.national-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:#7ec8f0;text-decoration:none;margin-top:2px;transition:color 0.15s}
+.national-link:hover{color:white}
+.national-link::after{content:'↗';font-size:11px}
+.national-note{margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(232,160,32,0.12);border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.6}
+.national-note strong{color:var(--gold)}
+.courses-teaser{background:linear-gradient(135deg,#0d1829 0%,#1a1040 100%);color:white;padding:3rem 2rem;text-align:center;border-top:2px solid var(--stem-purple);border-bottom:2px solid var(--stem-purple)}
+.courses-teaser-inner{max-width:700px;margin:0 auto}
+.courses-teaser h2{font-family:'DM Serif Display',serif;font-size:1.8rem;margin-bottom:0.5rem}
+.courses-teaser .teaser-sub{font-size:0.95rem;color:rgba(255,255,255,0.7);margin-bottom:1.5rem;line-height:1.6}
+.courses-teaser .teaser-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:1.75rem;text-align:left}
+.teaser-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);padding:14px 16px}
+.teaser-card-name{font-size:13px;font-weight:600;color:white;margin-bottom:4px}
+.teaser-card-detail{font-size:11px;color:rgba(255,255,255,0.55)}
+.courses-btn{display:inline-block;background:var(--stem-purple);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:12px 28px;border-radius:var(--radius-sm);text-decoration:none;transition:background 0.2s,transform 0.15s}
+.courses-btn:hover{background:#8a4dd4;transform:translateY(-1px)}
+.about-section{background:var(--navy-mid);padding:2.5rem 2rem;text-align:center;border-top:1px solid rgba(46,184,232,0.15)}
+.about-inner{max-width:560px;margin:0 auto}
+.about-avatar{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--stem-cyan);color:var(--navy);font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:1rem;font-weight:700}
+.about-section h2{font-family:'DM Serif Display',serif;font-size:1.4rem;color:white;margin-bottom:0.6rem}
+.about-section p{font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7}
+@media(max-width:640px){.controls{padding:0.75rem 1rem;top:56px}.content{padding:1.5rem 1rem 3rem}.age-toggle{display:grid;grid-template-columns:1fr 1fr;border:none;gap:6px;width:100%}.age-btn{border:1.5px solid rgba(46,184,232,0.35);border-radius:var(--radius-sm);text-align:center;font-size:13px;padding:8px 12px}.filter-group{gap:5px}.pill{font-size:11px;padding:4px 10px}.cards{grid-template-columns:1fr}.national-grid{grid-template-columns:1fr}.courses-teaser .teaser-cards{grid-template-columns:1fr 1fr}.submit-section{padding:2rem 1.5rem}.donate-bar{padding:1rem 1.5rem}.mission{padding:1rem 1.25rem;font-size:0.88rem;line-height:1.6}.translation-note{padding:1rem 1.25rem;font-size:12.5px}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+<span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;color:white;letter-spacing:0.03em;">Marin STEM Navigator</span>
+<div class="navbar-links">
+<a href="#local" class="nav-label">Local</a>
+<a href="#national" class="nav-label">Nacional</a>
+<a href="../courses.html" class="nav-label">Cursos</a>
+<span class="lang-switch nav-label"><a href="../">EN</a> · <span class="lang-active">ES</span></span>
+<a href="mailto:navigate@marinstemnavigator.org" class="nav-cta"><span class="cta-full">Enviar un programa</span><span class="cta-short" style="display:none">Enviar</span></a>
+</div>
+</nav>
+
+<header class="hero">
+<div class="hero-photo-spacer"></div>
+<div class="hero-inner">
+<div class="hero-content">
+<span class="hero-eyebrow">Condado de Marin, California</span>
+<div class="hero-wordmark">
+<span class="wm-marin">Marin </span><span class="wm-stem">STEM</span>
+<span class="wm-nav">Navigator</span>
+</div>
+<div class="hero-divider"><div class="hero-divider-line"></div><div class="hero-divider-dot"></div></div>
+<p class="hero-tagline">Caminos reales. Oportunidades reales.</p>
+<p class="hero-tagline-accent">Locales y más allá.</p>
+</div>
+</div>
+<div class="hero-credit">Foto: Elizabeth &mdash; luz prismática</div>
+</header>
+
+<div class="mission">
+<strong style="color:white;">Mi misión:</strong> Conectar a cada estudiante motivado del Condado de Marin &mdash; sin importar su escuela, sus ingresos o sus contactos &mdash; con las oportunidades que pueden cambiar su trayectoria. ¿Conoces un programa que falta aquí? Escribe a <a href="mailto:navigate@marinstemnavigator.org" style="color:var(--stem-cyan);text-decoration:none;">navigate@marinstemnavigator.org</a>
+</div>
+
+<div class="controls">
+<div class="controls-inner">
+<div class="search-box">
+<span class="search-icon">&#x2315;</span>
+<input type="text" id="search" placeholder="Buscar programas, temas, organizaciones... (marinSTEMnavigator.org)" oninput="render()">
+</div>
+<div class="age-toggle">
+<button class="age-btn active" data-age="all" onclick="setAge(this)">Todos los grados</button>
+<button class="age-btn" data-age="middle" onclick="setAge(this)">Secundaria (6-8)</button>
+<button class="age-btn" data-age="early" onclick="setAge(this)">Prepa inicial (9-10)</button>
+<button class="age-btn" data-age="upper" onclick="setAge(this)">Prepa superior (11-12)</button>
+</div>
+<div class="filter-group" id="pill-row"></div>
+</div>
+</div>
+
+<main class="content" id="local">
+<div class="result-count" id="result-count"></div>
+<div id="output"></div>
+</main>
+
+<section class="national-section" id="national">
+<div class="national-inner">
+<div class="national-header">
+<span class="national-eyebrow">Programas nacionales y competitivos</span>
+<h2>Programas de verano que valen el viaje</h2>
+<p>Estos son programas reales basados en mérito, organizados por las academias militares de EE. UU., agencias federales e instituciones de élite. Cada programa de esta lista es selectivo, sustancial y tiene peso real en una solicitud universitaria o en una nominación a una academia.</p>
+<div style="margin-top:1rem;padding:0.85rem 1.1rem;background:rgba(232,160,32,0.13);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:12.5px;color:rgba(255,255,255,0.85);line-height:1.65;">
+<strong style="color:var(--gold);">No son programas de pago.</strong> Estos no son las &ldquo;academias de liderazgo&rdquo; de $3,000 que se anuncian en las revistas de preparación universitaria. Cada programa aquí es operado por el gobierno de EE. UU., una academia federal o una institución de investigación reconocida a nivel nacional. La selección es competitiva y se basa en el mérito.
+</div>
+</div>
+<div class="national-grid" id="national-grid"></div>
+<div class="national-note">
+<strong>Las fechas de solicitud importan.</strong> La mayoría de estos programas abren las solicitudes en diciembre o enero para el verano siguiente. Pon un recordatorio en el calendario en noviembre para revisar el sitio web de cada programa. Perder el plazo por una semana es la forma más común en que los estudiantes pierden estas oportunidades.
+</div>
+</div>
+</section>
+
+<section class="courses-teaser" id="courses">
+<div class="courses-teaser-inner">
+<span class="national-eyebrow" style="border-color:rgba(155,93,229,0.4);color:var(--stem-purple);">Navegador de cursos universitarios</span>
+<h2>Cursos universitarios reales. Gratuitos o de bajo costo.</h2>
+<p class="teaser-sub">Las mejores universidades ahora publican el contenido real de sus cursos en línea. No son videos al azar &mdash; son las mismas clases, tareas y exámenes que se usan en MIT, Harvard, Stanford y Berkeley. Bien aprovechados, fortalecen una solicitud universitaria y construyen habilidades reales.</p>
+<div class="teaser-cards">
+<div class="teaser-card"><div class="teaser-card-name">MIT OpenCourseWare</div><div class="teaser-card-detail">2,500+ cursos &bull; Gratis</div></div>
+<div class="teaser-card"><div class="teaser-card-name">Harvard (CS50 y más)</div><div class="teaser-card-detail">600+ cursos &bull; Gratis</div></div>
+<div class="teaser-card"><div class="teaser-card-name">Stanford Online</div><div class="teaser-card-detail">IA, ingeniería &bull; Gratis/Pago</div></div>
+<div class="teaser-card"><div class="teaser-card-name">edX y Coursera</div><div class="teaser-card-detail">Miles de cursos &bull; Audita gratis</div></div>
+</div>
+<a href="../courses.html" class="courses-btn">Explora la guía completa &rarr;</a>
+</div>
+</section>
+
+<section class="submit-section">
+<div class="submit-inner">
+<h2>¿Conoces un programa que me falta?</h2>
+<p>Esta guía es mantenida por una estudiante. Si conoces una oportunidad STEM, una pasantía, una competencia o un recurso local que los jóvenes de Marin deberían conocer, ¡avísame!</p>
+<a href="mailto:navigate@marinstemnavigator.org" class="submit-btn">Enviar una oportunidad &rarr;</a>
+</div>
+</section>
+
+<div class="translation-note">
+<strong style="color:white;">¿Encontraste un error de traducción?</strong> Esta página fue traducida al español como parte del compromiso del sitio con la accesibilidad. Si ves algo que se puede mejorar, escríbenos a <a href="mailto:navigate@marinstemnavigator.org">navigate@marinstemnavigator.org</a> &mdash; queremos que esta página sea útil para todas las familias del Condado de Marin.
+</div>
+
+<div class="donate-bar">
+<div class="donate-inner">
+<p>Este sitio es gratuito, no tiene anuncios y es mantenido por una estudiante. Mantener un sitio web cuesta dinero. Si esta página te ayudó a encontrar algo útil, puedes apoyarla con literalmente un dólar.</p>
+<a class="donate-btn" href="https://buy.stripe.com/aFa6oH6SK2GJf8O74G6kg01" target="_blank">
+💳
+Apoya con $1
+</a>
+<div class="donate-label">¿Preguntas o comentarios? <a href="mailto:navigate@marinstemnavigator.org">navigate@marinstemnavigator.org</a> &nbsp;|&nbsp; Pago seguro vía Stripe (página en inglés).</div>
+</div>
+</div>
+
+<section class="about-section">
+<div class="about-inner">
+<div class="about-avatar">E</div>
+<h2>Hecho por una estudiante, para estudiantes.</h2>
+<p>Hola &mdash; soy Elizabeth, estudiante de octavo grado en San Rafael. Hice este sitio porque si estás haciendo el trabajo duro para sobresalir, mereces conocer todas las oportunidades que existen para ayudarte a llegar a donde quieres ir.</p>
+</div>
+</section>
+
+<footer>
+<p>marinSTEMnavigator.org &nbsp;|&nbsp; Creado por una estudiante de Marin &nbsp;|&nbsp; Actualizado en abril de 2026 &nbsp;|&nbsp; <a href="mailto:navigate@marinstemnavigator.org">navigate@marinstemnavigator.org</a></p>
+<p>Sitio sin afiliación a ninguna de las organizaciones listadas. &nbsp;|&nbsp; <a href="../">English version</a></p>
+</footer>
+<script>
+const OPPORTUNITIES=[
+{name:"EAA Young Eagles",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Vuelos gratuitos para jóvenes de 8 a 17 años con pilotos voluntarios. El Aeropuerto del Condado de Sonoma (Santa Rosa) es la sede más cercana y confiable.",cost:"Gratis",type:"Experiencia de vuelo",url:"https://www.eaa.org/eaa/youth/free-ye-flights",marin:true},
+{name:"Civil Air Patrol - Programa de Cadetes",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Kits STEM, vuelos de orientación, programas de planeadores, educación aeroespacial y desarrollo de liderazgo. Escuadrón activo en Gnoss Field, Novato.",cost:"Bajo costo",type:"Programa",url:"https://www.gocivilairpatrol.com",marin:true},
+{name:"CAP - Miembro de Educación Aeroespacial",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Los maestros pueden inscribirse como Miembros de Educación Aeroespacial para recibir más de 20 kits STEM gratis, currículo y presentaciones en el aula por voluntarios locales del CAP.",cost:"Gratis",type:"Recurso para maestros",url:"https://www.gocivilairpatrol.com/programs/aerospace-education",marin:true},
+{name:"AOPA You Can Fly - Becas de Pilotaje",cat:"aviation",grades:[9,10,11,12],desc:"Currículo de aviación para preparatoria, becas de entrenamiento de vuelo y recursos para el camino al pilotaje, ofrecidos por la Aircraft Owners and Pilots Association.",cost:"Gratis / Beca",type:"Beca + currículo",url:"https://www.aopa.org/training-and-safety/students/high-school"},
+{name:"Hiller Aviation Museum - Programas para Adolescentes",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Museo en San Carlos junto a un aeropuerto activo. Programación STEM para adolescentes, actividades de diseño de aeronaves y exploración de carreras.",cost:"Bajo costo",type:"Museo / programa",url:"https://hiller.org"},
+{name:"Chabot Space & Science Center",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Oakland. Astronomía, ciencias espaciales y el programa nocturno Moonlight Missions para grados 6-12. Galaxy Explorers y Oakland Space Academy para liderazgo juvenil.",cost:"Bajo costo",type:"Excursión / programa",url:"https://www.chabotspace.org"},
+{name:"NASA - Programas de Participación STEM",cat:"aviation",grades:[6,7,8,9,10,11,12],desc:"Retos de diseño de ingeniería en línea, programas virtuales y algunas oportunidades de pasantías a distancia.",cost:"Gratis",type:"A distancia / programa",url:"https://www.nasa.gov/learning-resources/"},
+{name:"Marin Science Seminar - Pasantía Estudiantil",cat:"stem",grades:[9,10,11,12],desc:"Pasantía para grados 9-12 del Condado de Marin. Asiste a 6 charlas científicas los miércoles por la tarde en Terra Linda HS con profesionales reales de STEM. Las solicitudes abren en agosto.",cost:"Gratis",type:"Pasantía",url:"https://marinscienceseminar.com/interns/",marin:true},
+{name:"Marin School-to-Career - Programa de Pasantías",cat:"stem",grades:[9,10,11,12],desc:"Programa del condado que coloca a estudiantes de prepa en Autodesk, Kaiser, ILM, Marin General Hospital y más de 140 empleadores. Uno de los recursos más subutilizados de Marin.",cost:"Gratis",type:"Pasantía",url:"https://www.marinschools.org/programs-services/programs/college-and-career-readiness-new/school-to-career-stc",marin:true},
+{name:"STEM Marin - Camino de 4 Años en Prepa",cat:"stem",grades:[9,10,11,12],desc:"Camino competitivo de 4 años en Ingeniería, Biotecnología o Arte en Ciencia en San Marin High School (NUSD). Las solicitudes abren cada noviembre.",cost:"Gratis",type:"Programa escolar",url:"https://stemmarin.org",marin:true},
+{name:"Exploratorium - San Francisco",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"Más de 700 exhibiciones científicas interactivas. Gratis para escuelas Title I. Excelentes materiales para maestros, incluyendo Science Snacks y Digital Teaching Boxes.",cost:"Gratis - Bajo",type:"Excursión",url:"https://www.exploratorium.edu"},
+{name:"Exploratorium - Explainers de Prepa",cat:"leadership",grades:[9,10,11,12],desc:"Puesto pagado o de voluntariado facilitando la ciencia en el museo. Selectivo. Incluye capacitación, mentoría y preparación profesional.",cost:"Gratis",type:"Pasantía",url:"https://www.exploratorium.edu/education/explainer-programs"},
+{name:"Lawrence Hall of Science - Berkeley",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"Institución científica enfocada en maestros. Programas escolares, festivales de ciencia, desarrollo profesional y materiales de instrucción sólidos para el aula.",cost:"Bajo costo",type:"Excursión / recurso para maestros",url:"https://lawrencehallofscience.org"},
+{name:"SLAC National Accelerator Lab",cat:"stem",grades:[9,10,11,12],desc:"Recorridos guiados gratuitos para grupos escolares de 10 a 25 personas. Conferencias públicas. Una de las experiencias más impresionantes de un laboratorio nacional real en el Área de la Bahía.",cost:"Gratis",type:"Recorrido / pasantía",url:"https://www6.slac.stanford.edu/public-tours"},
+{name:"Lawrence Berkeley National Lab - BLAST",cat:"stem",grades:[9,10,11,12],desc:"Pasantías de prepa y programas de investigación de verano en un laboratorio nacional del Departamento de Energía. Excelente para solicitudes universitarias y carreras científicas.",cost:"Gratis",type:"Pasantía",url:"https://education.lbl.gov"},
+{name:"Stanford Young Investigators",cat:"stem",grades:[9,10,11,12],desc:"Pasantía competitiva de investigación en Stanford para estudiantes de prepa del Área de la Bahía. Anota la fecha temprano - los espacios son limitados.",cost:"Gratis",type:"Pasantía",url:"https://earth.stanford.edu/young-investigators"},
+{name:"Stanford SHTEM - Investigación de Verano",cat:"stem",grades:[10,11,12],desc:"Experiencia de investigación de verano presencial en Stanford. Las solicitudes abren a principios de otoño y cierran rápido.",cost:"Gratis",type:"Programa de verano",url:"https://shtem.stanford.edu"},
+{name:"The Tech Interactive - San José",cat:"stem",grades:[6,7,8,9,10,11,12],desc:"Ingeniería, IA, programación, diseño. Excursiones, laboratorios prácticos y la competencia Tech Challenge (grados 4-12).",cost:"Bajo costo",type:"Excursión / competencia",url:"https://www.thetech.org"},
+{name:"FIRST Robotics Competition",cat:"stem",grades:[9,10,11,12],desc:"Competencia de robótica de élite con becas universitarias importantes y patrocinios de la industria. Construye habilidades reales de ingeniería bajo restricciones reales.",cost:"Bajo costo",type:"Competencia",url:"https://www.firstinspires.org"},
+{name:"COSMOS - Programa de Verano del Sistema UC",cat:"stem",grades:[9,10,11,12],desc:"Programa STEM residencial de verano de la UC, altamente competitivo. Una de las experiencias académicas de verano más prestigiosas de California.",cost:"Moderado",type:"Programa de verano",url:"https://cosmos-ucop.ucdavis.edu"},
+{name:"MIT Beaver Works Summer Institute",cat:"stem",grades:[11,12],desc:"Programa de verano gratuito y altamente selectivo en aeroespacio, robótica e IA. Uno de los programas STEM de verano más prestigiosos del país.",cost:"Gratis",type:"Programa de verano",url:"https://beaverworks.ll.mit.edu/CMS/bw/bwsi"},
+{name:"Genentech - Programas de Laboratorio Estudiantil",cat:"biotech",grades:[9,10,11,12],desc:"South San Francisco. Programas de laboratorio para estudiantes, divulgación de biotecnología y eventos de exploración de carreras.",cost:"Gratis",type:"Programa / experiencia",url:"https://www.gene.com/good/giving/corporate-giving/education"},
+{name:"UCSF - Educación Científica y de Salud",cat:"biotech",grades:[9,10,11,12],desc:"Pasantías afiliadas a UCSF, conexiones con científicos en el aula y exploración de carreras biomédicas.",cost:"Gratis",type:"Pasantía",url:"https://sep.ucsf.edu"},
+{name:"UC Davis - Teen Biotech Challenge",cat:"biotech",grades:[9,10,11,12],desc:"Competencia de investigación en biotecnología basada en laboratorio para estudiantes de prepa.",cost:"Bajo costo",type:"Competencia",url:"https://biotech.ucdavis.edu/teen-biotech-challenge"},
+{name:"CyberPatriot - Competencia de Ciberseguridad",cat:"cyber",grades:[6,7,8,9,10,11,12],desc:"Competencia nacional patrocinada por Northrop Grumman. Usada por CAP, Sea Cadets y JROTC. Lleva directamente a becas y carreras en ciberseguridad.",cost:"Gratis",type:"Competencia",url:"https://www.uscyberpatriot.org"},
+{name:"AI4ALL - Programa de IA y Ética",cat:"cyber",grades:[10,11,12],desc:"Programas de IA y ética con raíces en el Área de la Bahía para estudiantes destacados. Énfasis fuerte en comunidades subrepresentadas en tecnología.",cost:"Gratis",type:"Programa",url:"https://ai-4-all.org"},
+{name:"Computer History Museum - Pasantes Adolescentes",cat:"cyber",grades:[9,10,11,12],desc:"Pasantía voluntaria para grados 9-12 en el museo de Mountain View. Trabaja con el equipo educativo e interactúa con visitantes.",cost:"Gratis",type:"Pasantía",url:"https://computerhistory.org"},
+{name:"Marine Mammal Center - Sausalito",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Marine Science Sundays gratuitos. Hospital y centro de investigación real de mamíferos marinos - no solo un museo.",cost:"Gratis",type:"Excursión / divulgación",url:"https://www.marinemammalcenter.org",marin:true},
+{name:"Bay Model Visitor Center - Sausalito",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Sitio del Cuerpo de Ingenieros del Ejército de EE. UU. Recorridos guiados sobre hidrología de la Bahía, estuarios, mareas e ingeniería costera. Gratis con reservación.",cost:"Gratis",type:"Excursión",url:"https://www.spn.usace.army.mil/missions/recreation/bay-model-visitor-center/",marin:true},
+{name:"California Academy of Sciences",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Excelente para biología, ecología, clima y biodiversidad. Gran centro educativo con planes de lección alineados a NGSS.",cost:"Bajo costo",type:"Excursión",url:"https://www.calacademy.org/educators"},
+{name:"One Tam - Programas Juveniles en Mt. Tamalpais",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Liderazgo ambiental, proyectos de servicio, pasantías y puestos pagados del Servicio de Parques Nacionales en Mt. Tamalpais. Camino único de liderazgo en la naturaleza basado en Marin.",cost:"Gratis / Pagado",type:"Pasantía / voluntariado",url:"https://www.onetam.org/our-work/youth-programs",marin:true},
+{name:"Point Reyes National Seashore - Programas",cat:"environment",grades:[6,7,8,9,10,11,12],desc:"Programas de ciencia de campo, ecología y clima en Point Reyes.",cost:"Gratis",type:"Excursión",url:"https://www.nps.gov/pore/learn/education.htm",marin:true},
+{name:"Golden Gate NPS - Adventure Guides",cat:"environment",grades:[9,10,11,12],desc:"Pasantía pagada de 6 meses a través de la Golden Gate National Parks Conservancy. Liderazgo ambiental en Presidio Tunnel Tops.",cost:"Pagado",type:"Pasantía",url:"https://www.parksconservancy.org"},
+{name:"U.S. Naval Sea Cadet Corps",cat:"leadership",grades:[6,7,8,9,10,11,12],desc:"Programa juvenil uniformado enfocado en la Marina (10-17 años) con caminos de ciberseguridad, ingeniería, navegación y liderazgo.",cost:"Bajo costo",type:"Programa",url:"https://www.seacadets.org"},
+{name:"Sea Scouts BSA",cat:"leadership",grades:[8,9,10,11,12],desc:"Programa juvenil oficial de la Auxiliar de la Guardia Costera de EE. UU. Programa mixto para 14-20 años. Náutica, navegación y liderazgo.",cost:"Bajo costo",type:"Programa",url:"https://seascout.org"},
+{name:"JROTC",cat:"leadership",grades:[9,10,11,12],desc:"Programa electivo escolar en versiones del Ejército, Marina, Fuerza Aérea, Marines y Guardia Costera. Sin obligación militar. Tiene peso real en solicitudes universitarias.",cost:"Gratis",type:"Programa escolar",url:"https://www.todaysmilitary.com/ways-to-serve/jrotc"},
+{name:"Coast Guard Academy - Programa AIM",cat:"leadership",grades:[11,12],desc:"Misión de Introducción a la Academia de una semana para estudiantes de último año. Vista realista de la vida en la Coast Guard Academy. Los Sea Scouts reciben prioridad en la nominación.",cost:"Gratis",type:"Programa de verano",url:"https://www.uscga.edu/aim/"}
+];
+const NATIONAL=[
+{name:"U.S. Naval Academy - Summer STEM",badge:"nb-stem",badgeLabel:"Campamento STEM",desc:"Una semana en Annapolis para estudiantes que entran a 9°-11° grado. Proyectos STEM prácticos enseñados por profesores de USNA.",cost:"~$450",costClass:"national-tag-paid",type:"Entrando a 9°-11°",apply:"Enero-Marzo",url:"https://www.usna.edu/Admissions/Programs/STEM.php"},
+{name:"U.S. Naval Academy - NASS",badge:"nb-academy",badgeLabel:"Vista a la Academia",desc:"Inmersión de seis días en la vida de cadete en Annapolis para estudiantes que entran al último año. ~800 lugares por sesión.",cost:"~$450",costClass:"national-tag-paid",type:"Entrando al último año",apply:"Enero - 31 marzo",url:"https://www.usna.edu/Admissions/Programs/NASS.php"},
+{name:"Air Force Academy - Summer Seminar",badge:"nb-academy",badgeLabel:"Vista a la Academia",desc:"Inmersión de cuatro días en la vida de cadete en Colorado Springs para estudiantes que entran al último año. Solo ~300 lugares por sesión.",cost:"Cuota baja",costClass:"national-tag-paid",type:"Entrando al último año",apply:"1 dic - 15 ene",url:"https://www.academyadmissions.com/prepare/high-school/summer-seminar/"},
+{name:"West Point - Summer Leaders (SLE)",badge:"nb-academy",badgeLabel:"Vista a la Academia",desc:"Inmersión de cinco días en West Point para estudiantes que entran al último año. ~1,100 lugares de más de 6,000 solicitantes. Becas según necesidad disponibles.",cost:"~$500-550",costClass:"national-tag-paid",type:"Entrando al último año",apply:"15 feb - 15 abr",url:"https://www.westpoint.edu/admissions/summer-program"},
+{name:"Coast Guard Academy - AIM",badge:"nb-academy",badgeLabel:"Vista a la Academia",desc:"Misión de Introducción a la Academia de una semana. Los miembros de Sea Scouts BSA reciben prioridad en la consideración de nominación.",cost:"~$750 / Virtual gratis",costClass:"national-tag-paid",type:"Entrando al último año",apply:"Feb - 1 abr",url:"https://www.uscga.edu/aim/"},
+{name:"USNA y West Point - Campamentos STEM (sec.)",badge:"nb-stem",badgeLabel:"Campamento STEM",desc:"Ambas academias tienen campamentos STEM para estudiantes de secundaria y prepa inicial. El campamento de West Point está totalmente financiado.",cost:"Gratis (WP) / Bajo (USNA)",costClass:"national-tag-free",type:"Entrando a 7°-10°",apply:"Enero-Marzo",url:"https://www.usna.edu/Admissions/Programs/STEM.php"},
+{name:"Aim High Flight Academy - USAF",badge:"nb-aviation",badgeLabel:"Aviación",desc:"Programa introductorio de vuelo de tres semanas. Los participantes acumulan hasta 15 horas reales de vuelo.",cost:"Gratis",costClass:"national-tag-free",type:"Prepa",apply:"Otoño",url:"https://www.recruiting.af.mil/Aim-High-Flight-Academy/"},
+{name:"SAME - Campamentos de Ingeniería",badge:"nb-stem",badgeLabel:"Campamento STEM",desc:"Campamentos de ingeniería de una semana en bases militares. Los estudiantes viven en barracas, operan drones y construyen estructuras.",cost:"~$800",costClass:"national-tag-paid",type:"Entrando a 10°-12°",apply:"Primavera",url:"https://www.same.org/camps/"},
+{name:"MIT Beaver Works (BWSI)",badge:"nb-stem",badgeLabel:"Investigación STEM",desc:"Programa nacional de verano gratuito y altamente selectivo en aeroespacio, vehículos autónomos, robótica e IA.",cost:"Gratis",costClass:"national-tag-free",type:"Entrando a 11°-12°",apply:"Invierno",url:"https://beaverworks.ll.mit.edu/CMS/bw/bwsi"},
+{name:"COSMOS - UC Residencial STEM",badge:"nb-stem",badgeLabel:"Investigación STEM",desc:"Cuatro semanas de cursos STEM intensivos en campus de la UC. Altamente competitivo. Ayuda financiera disponible.",cost:"Moderado (con ayuda)",costClass:"national-tag-paid",type:"Entrando a 9°-12°",apply:"Invierno-Primavera",url:"https://cosmos-ucop.ucdavis.edu"},
+{name:"CyberPatriot - Nacionales",badge:"nb-cyber",badgeLabel:"Ciberseguridad",desc:"Competencia nacional de defensa en ciberseguridad. Los equipos ganadores avanzan a las finales en Washington D.C.",cost:"Gratis",costClass:"national-tag-free",type:"Grados 6-12",apply:"Inscripción cada otoño",url:"https://www.uscyberpatriot.org"}
+];
+const CATS=[{id:"all",label:"Todas las categorías"},{id:"aviation",label:"Aviación y aeroespacio"},{id:"biotech",label:"Biotecnología y ciencias de la vida"},{id:"cyber",label:"Cibernética y computación"},{id:"environment",label:"Medio ambiente y ciencia de campo"},{id:"stem",label:"STEM e investigación"},{id:"leadership",label:"Liderazgo"},{id:"marin",label:"Solo Marin local"}];
+const AGE_GROUPS=[{key:"middle",label:"Secundaria",sub:"Grados 6-8",grades:[6,7,8]},{key:"early",label:"Prepa inicial",sub:"Grados 9-10",grades:[9,10]},{key:"upper",label:"Prepa superior",sub:"Grados 11-12",grades:[11,12]}];
+let activeCat="all",activeAge="all";
+const pillRow=document.getElementById("pill-row");
+CATS.forEach(c=>{const b=document.createElement("button");b.className="pill cat-"+c.id+(c.id==="all"?" active":"");b.textContent=c.label;b.onclick=()=>{activeCat=c.id;document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));b.classList.add("active");render()};pillRow.appendChild(b)});
+function setAge(btn){activeAge=btn.dataset.age;document.querySelectorAll(".age-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");render()}
+function matchesFilters(item){const q=document.getElementById("search").value.toLowerCase().trim();const ag=activeAge==="all"?[6,7,8,9,10,11,12]:activeAge==="middle"?[6,7,8]:activeAge==="early"?[9,10]:[11,12];return item.grades.some(g=>ag.includes(g))&&(activeCat==="all"||item.cat===activeCat||(activeCat==="marin"&&item.marin))&&(!q||[item.name,item.desc,item.cat,item.type,item.cost].join(" ").toLowerCase().includes(q))}
+function cc(c){return c==="Gratis"?"meta-free":c==="Pagado"?"meta-paid":""}
+const CL={aviation:"Aviación y aeroespacio",biotech:"Biotecnología",cyber:"Cibernética y CS",environment:"Medio ambiente",stem:"STEM e investigación",leadership:"Liderazgo"};
+function render(){const out=document.getElementById("output");const ag=activeAge==="all"?[6,7,8,9,10,11,12]:activeAge==="middle"?[6,7,8]:activeAge==="early"?[9,10]:[11,12];let total=0,html="";const sects=activeAge==="all"?AGE_GROUPS:AGE_GROUPS.filter(g=>g.grades.some(gr=>ag.includes(gr)));
+sects.forEach(group=>{const items=OPPORTUNITIES.filter(item=>item.grades.some(g=>group.grades.includes(g))&&matchesFilters(item));if(!items.length)return;total+=items.length;
+html+='<div class="age-section"><div class="age-section-header"><div><div class="age-section-title">'+group.label+'</div><div class="age-section-sub">'+group.sub+'</div></div><div class="age-divider"></div><span class="section-count">'+items.length+'</span></div><div class="cards">';
+items.forEach((item,idx)=>{html+='<div class="card'+(item.marin?" marin-card":"")+'" style="animation-delay:'+(idx*30)+'ms"><div class="card-header"><div class="card-name">'+item.name+'</div><span class="badge badge-'+item.cat+'">'+(CL[item.cat]||item.cat)+'</span></div><div class="card-desc">'+item.desc+'</div><div class="card-meta"><span class="meta-tag">'+item.type+'</span><span class="meta-tag '+cc(item.cost)+'">'+item.cost+'</span>'+(item.marin?'<span class="meta-tag meta-marin">Marin local</span>':'')+'</div><a class="card-link" href="'+item.url+'" target="_blank" rel="noopener">Visitar sitio web</a></div>'});
+html+='</div></div>'});
+document.getElementById("result-count").innerHTML=total>0?'Mostrando <strong>'+total+'</strong> oportunidad'+(total===1?"":"es"):"";
+out.innerHTML=html||'<div class="empty"><div class="empty-icon">&#x2315;</div><h3>Sin resultados</h3><p>Intenta con otra búsqueda o quita los filtros.</p></div>'}
+function renderNational(){const grid=document.getElementById("national-grid");if(!grid)return;let html="";NATIONAL.forEach(item=>{html+='<div class="national-card"><div class="national-card-top"><div class="national-card-name">'+item.name+'</div><span class="national-badge '+item.badge+'">'+item.badgeLabel+'</span></div><div class="national-desc">'+item.desc+'</div><div class="national-meta"><span class="national-tag">'+item.type+'</span><span class="national-tag '+item.costClass+'">'+item.cost+'</span><span class="national-tag">Solicitar: '+item.apply+'</span></div><a class="national-link" href="'+item.url+'" target="_blank" rel="noopener">Visitar sitio web</a></div>'});grid.innerHTML=html}
+render();renderNational();
+</script>
+<!-- GoatCounter analytics - privacy-respecting, no cookies -->
+<script data-goatcounter="https://marinstemnav.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
